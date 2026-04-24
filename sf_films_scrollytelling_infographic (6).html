@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SF Films — Scrollytelling Map</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #0c0c0c;
+  color: #f5f3ee;
+  position: relative;
+}
+
+.scene {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.map-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; /* map stays behind */
+}
+
+.map-wrapper {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+}
+
+.map-img {
+  width: 100%;
+  filter: grayscale(100%) brightness(0.4) contrast(1.2);
+}
+
+.point {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(201,136,58,0.9);
+  box-shadow: 0 0 12px rgba(201,136,58,0.8);
+  transform: translate(-50%, -50%);
+  opacity: 0.15;
+  transition: all 0.4s ease;
+}
+
+.point.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.8);
+}
+
+.steps {
+  position: relative;
+  z-index: 2; /* ensures text is above map */
+  width: 38%;
+  margin-left: auto;
+  padding: 100vh 40px;
+}
+
+.step {
+  margin-bottom: 60vh;
+  font-size: 20px;
+  opacity: 0.15;
+  transition: opacity 0.2s ease;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+.step::before {
+  content: attr(data-step);
+  display: block;
+  font-size: 12px;
+  color: #C9883A;
+  margin-bottom: 8px;
+  letter-spacing: 0.1em;
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="scene">
+  <div>
+    <h1 style="font-family:'DM Serif Display', serif; font-size:64px;">Where films<br>find their place</h1>
+    <p>San Francisco, mapped through cinema</p>
+  </div>
+</section>
+
+<div class="map-container">
+  <div class="map-wrapper">
+    <img src="San-Francisco-Neighborhood-Map-2.jpg" class="map-img" />
+
+    <!-- Points -->
+    <div id="p1" class="point" style="top:35%; left:70%"></div>
+    <div id="p2" class="point" style="top:40%; left:40%"></div>
+    <div id="p3" class="point" style="top:30%; left:35%"></div>
+    <div id="p4" class="point" style="top:50%; left:50%"></div>
+    
+
+  </div>
+</div>
+
+<div class="steps">
+  <div class="step" data-point="p1">
+    The Financial District dominates as the most filmed area, with 34 films created here.
+  </div>
+
+  <div class="step" data-point="p2">
+    Lone Mountain leads in box office success, with an average of $115,000,000.
+  </div>
+
+  <div class="step" data-point="p3">
+    Lincoln Park earns the highest ratings with an average between 7.5 to 8.2 on IMDB.
+  </div>
+
+  <div class="step" data-point="p4">
+    Haight Ashbury shows the biggest gap - high revenue, low ratings. The average rating here is 5.65, while the earnings are around $107,450,007.
+  </div>
+
+  
+</div>
+
+<script>
+const steps = document.querySelectorAll('.step');
+const points = document.querySelectorAll('.point');
+
+function activateStep(index) {
+  steps.forEach((s,i)=>s.classList.toggle('active', i===index));
+  points.forEach(p=>p.classList.remove('active'));
+
+  const step = steps[index];
+  const pointId = step.dataset.point;
+
+  if(pointId){
+    const el = document.getElementById(pointId);
+    el.classList.add('active');
+  }
+}
+
+window.addEventListener('scroll', () => {
+  let index = 0;
+  steps.forEach((step, i) => {
+    const rect = step.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.6) index = i;
+  });
+  activateStep(index);
+});
+</script>
+
+</body>
+</html>

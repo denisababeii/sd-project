@@ -1,0 +1,317 @@
+Title,Year,Kind,Genres,compound,pos,neg,neu,sentiment_label,won_oscar,dominant_topic,Imdb_rating,Imdb_votes,Metascore,rt_score_num,box_office_num,Awards,Analysis neighborhood
+Milk,2008,movie,"Biography, Drama, History",0.6808,0.097,0.052,0.851,positive,True,6,7.5,184363.0,83.0,93.0,31841299.0,Won 2 Oscars. 66 wins & 146 nominations total,Lincoln Park
+Chance,2016,series,"Drama, Mystery, Thriller",0.9779,0.225,0.117,0.658,positive,False,5,7.5,11253.0,,,,,North Beach
+Red Widow,2013,series,"Crime, Drama, Thriller",-0.9062,0.0,0.303,0.697,negative,False,3,6.5,3211.0,,,,,Nob Hill
+Shuang cheng gu shi,2018,series,Drama,0.3612,0.098,0.0,0.902,positive,False,1,6.4,183.0,,,,7 nominations,
+Americana,2016,movie,Drama,-0.6908,0.0,0.266,0.734,negative,False,2,5.5,62.0,,,,1 win & 1 nomination,Marina
+Desperate Measures,1998,movie,"Action, Crime, Drama",0.4005,0.177,0.151,0.672,positive,False,1,6.1,18825.0,,19.0,13806137.0,1 win total,
+Devs,2020,series,"Drama, Mystery, Sci-Fi",0.0,0.0,0.0,1.0,neutral,False,2,7.6,55967.0,,,,Nominated for 4 Primetime Emmys. 14 nominations total,Russian Hill
+The Organization,1971,movie,"Action, Crime, Drama",-0.9619,0.055,0.212,0.733,negative,False,4,6.0,2225.0,,25.0,1501277.0,1 nomination,
+Murder in the First,2014,series,"Crime, Drama, Mystery",-0.8834,0.048,0.394,0.558,negative,False,2,7.3,8057.0,,,,2 wins & 2 nominations total,Chinatown
+Sense8,2015,series,"Drama, Mystery, Sci-Fi",0.5423,0.078,0.044,0.878,positive,False,2,8.2,170731.0,,,,Nominated for 2 Primetime Emmys. 3 wins & 17 nominations total,Mission
+The Wedding Planner,2001,movie,"Comedy, Romance",0.9259,0.133,0.0,0.867,positive,False,0,5.4,90779.0,33.0,,60400856.0,2 wins & 6 nominations total,Tenderloin
+Quitters,2015,movie,"Comedy, Drama",0.6705,0.145,0.083,0.772,positive,False,5,5.2,278.0,51.0,38.0,,2 nominations,
+Outerlands,2025,movie,"Drama, Family",0.2732,0.07,0.042,0.888,positive,False,0,,46.0,,,,2 wins & 2 nominations total,Mission
+Time After Time,1979,movie,"Adventure, Drama, Sci-Fi",-0.1027,0.114,0.079,0.807,negative,False,4,7.0,21624.0,69.0,88.0,,7 wins & 7 nominations total,Financial District/South Beach
+Babies,2010,movie,Documentary,0.0,0.0,0.0,1.0,neutral,False,6,7.0,7487.0,63.0,67.0,7320323.0,3 nominations,
+Terminator Genisys,2015,movie,"Action, Adventure, Sci-Fi",0.0,0.095,0.082,0.822,neutral,False,0,6.3,305926.0,38.0,26.0,89760956.0,9 nominations total,Nob Hill
+Good Neighbor Sam,1964,movie,Comedy,0.9377,0.082,0.037,0.881,positive,False,6,6.8,3366.0,,80.0,9072726.0,Nominated for 1 BAFTA Award2 nominations total,Presidio
+San Andreas,2015,movie,"Action, Adventure, Thriller",0.5423,0.147,0.098,0.755,positive,False,3,6.1,271110.0,43.0,48.0,155190832.0,2 wins & 10 nominations total,
+Bullitt,1968,movie,"Action, Crime, Thriller",0.6705,0.136,0.032,0.831,positive,True,5,7.4,81318.0,81.0,98.0,511350.0,Won 1 Oscar. 8 wins & 9 nominations total,Lakeshore
+Blue Jasmine,2013,movie,"Comedy, Drama, Romance",-0.9645,0.048,0.234,0.718,negative,True,7,7.3,218419.0,78.0,90.0,33405481.0,Won 1 Oscar. 56 wins & 83 nominations total,Marina
+Goliath,2016,series,Drama,-0.9452,0.097,0.226,0.677,negative,False,0,8.1,62986.0,,,,Nominated for 1 Primetime Emmy. 1 win & 11 nominations total,Financial District/South Beach
+Looking,2014,series,"Comedy, Drama, Romance",0.9287,0.354,0.0,0.646,positive,False,0,8.2,22547.0,,,,4 wins & 19 nominations total,Tenderloin
+Venom,2018,movie,"Action, Adventure, Sci-Fi",-0.6369,0.0,0.11,0.89,negative,False,2,6.6,601600.0,35.0,31.0,213515506.0,2 wins & 9 nominations total,Financial District/South Beach
+Always Be My Maybe,2019,movie,"Comedy, Romance",-0.1154,0.028,0.034,0.937,negative,False,5,6.7,64602.0,64.0,89.0,,1 win & 5 nominations total,Golden Gate Park
+Burglar,1987,movie,"Comedy, Crime",-0.8481,0.121,0.206,0.673,negative,False,5,5.1,4812.0,,27.0,16337355.0,,North Beach
+I Am Michael,2015,movie,"Biography, Drama, Romance",0.0644,0.108,0.107,0.785,positive,False,2,5.6,5994.0,56.0,61.0,,8 wins & 3 nominations total,Mission
+After the Hunt,2025,movie,"Crime, Drama, Thriller",-0.5574,0.0,0.119,0.881,negative,False,7,5.7,21862.0,52.0,37.0,3258830.0,2 wins & 5 nominations total,Nob Hill
+Ant-Man,2015,movie,"Action, Comedy, Sci-Fi",0.9432,0.281,0.086,0.633,positive,False,2,7.2,769979.0,64.0,83.0,180202163.0,Nominated for 1 BAFTA Award4 wins & 34 nominations total,Russian Hill
+How Stella Got Her Groove Back,1998,movie,"Comedy, Drama, Romance",0.9661,0.182,0.0,0.818,positive,False,1,5.7,8508.0,56.0,51.0,37672941.0,4 wins & 8 nominations,Financial District/South Beach
+Can't Stop the Music,1980,movie,"Biography, Comedy, Musical",0.8151,0.117,0.052,0.831,positive,False,6,4.2,4600.0,,22.0,,4 wins & 11 nominations,Mission Bay
+Dream with the Fishes,1997,movie,"Comedy, Drama",-0.9285,0.088,0.198,0.714,negative,False,1,6.9,1926.0,,62.0,543708.0,,North Beach
+Nine Months,1995,movie,"Comedy, Romance",0.7841,0.187,0.0,0.813,positive,False,0,5.5,39483.0,47.0,26.0,69684532.0,1 win & 2 nominations total,North Beach
+MDMA,2017,movie,"Crime, Drama",0.6369,0.107,0.085,0.808,positive,False,0,5.3,782.0,60.0,56.0,,1 win & 1 nomination,Sunset/Parkside
+Basic Instinct,1992,movie,"Drama, Mystery, Romance",-0.9514,0.04,0.189,0.771,negative,False,1,7.1,241317.0,43.0,56.0,117727224.0,Nominated for 2 Oscars. 6 wins & 23 nominations total,Pacific Heights
+The Presidio,1988,movie,"Action, Crime, Mystery",-0.8686,0.0,0.155,0.845,negative,False,3,6.0,20728.0,31.0,41.0,20324096.0,2 nominations total,North Beach
+#Alive,2020,movie,"Action, Drama, Horror",-0.6716,0.098,0.164,0.738,negative,False,1,6.3,52542.0,,,,1 win & 1 nomination total,Potrero Hill
+180,2011,movie,"Drama, Romance",0.8338,0.129,0.025,0.846,positive,False,7,6.1,903.0,,,,5 nominations total,Tenderloin
+Family Plot,1976,movie,"Comedy, Crime, Drama",-0.7906,0.051,0.104,0.845,negative,False,2,6.8,25814.0,79.0,90.0,,2 wins & 6 nominations total,Pacific Heights
+Groove,2000,movie,"Drama, Music",0.9408,0.156,0.118,0.726,positive,False,0,6.6,4588.0,54.0,58.0,1115313.0,2 nominations,Potrero Hill
+Surface,2022,series,"Drama, Mystery, Thriller",-0.7783,0.0,0.228,0.772,negative,False,7,6.4,8043.0,,,,1 nomination total,Nob Hill
+Ant-Man and the Wasp: Quantumania,2023,movie,"Action, Adventure, Comedy",0.34,0.255,0.0,0.745,positive,False,0,6.0,265100.0,48.0,46.0,214504909.0,14 nominations total,Haight Ashbury
+The Internship,2013,movie,Comedy,0.4843,0.085,0.038,0.877,positive,False,1,6.3,226022.0,42.0,34.0,44672764.0,2 nominations total,Financial District/South Beach
+Patch Adams,1998,movie,"Biography, Comedy, Drama",0.3903,0.167,0.125,0.708,positive,False,3,6.9,128833.0,26.0,22.0,135026902.0,Nominated for 1 Oscar. 1 win & 7 nominations total,Financial District/South Beach
+Junior,1994,movie,"Comedy, Romance, Sci-Fi",-0.6249,0.027,0.087,0.886,negative,False,0,4.8,77696.0,59.0,37.0,36763355.0,Nominated for 1 Oscar. 5 nominations total,Russian Hill
+A Smile Like Yours,1997,movie,"Comedy, Romance",-0.7506,0.024,0.097,0.879,negative,False,7,4.8,1549.0,,,3330352.0,1 nomination,Nob Hill
+The Right Stuff,1983,movie,"Adventure, Biography, Drama",0.8979,0.182,0.046,0.772,positive,True,0,7.8,67160.0,91.0,96.0,21192102.0,Won 4 Oscars. 12 wins & 16 nominations total,
+Women Is Losers,2021,movie,Drama,-0.5106,0.0,0.091,0.909,negative,False,2,6.0,437.0,59.0,72.0,,9 wins & 2 nominations total,Mission
+The Competition,1980,movie,"Drama, Romance, Music",0.965,0.337,0.047,0.616,positive,False,1,6.6,2934.0,,67.0,14287755.0,Nominated for 2 Oscars. 5 nominations total,North Beach
+The Conversation,1974,movie,"Drama, Mystery, Thriller",-0.2382,0.034,0.047,0.919,negative,False,4,7.7,133330.0,88.0,94.0,4852199.0,Nominated for 3 Oscars. 14 wins & 17 nominations total,Financial District/South Beach
+The Rock,1996,movie,"Action, Adventure, Thriller",-0.7448,0.082,0.103,0.815,negative,False,3,7.4,377015.0,58.0,68.0,134069511.0,Nominated for 1 Oscar. 9 wins & 10 nominations total,Nob Hill
+Tales of the City,2019,series,Drama,-0.4404,0.059,0.091,0.851,negative,False,7,7.4,9301.0,,,,2 wins & 4 nominations total,Russian Hill
+Girlboss,2017,series,Comedy,0.296,0.109,0.067,0.824,positive,False,6,7.0,20064.0,,,,,Castro/Upper Market
+High Crimes,2002,movie,"Crime, Drama, Mystery",-0.4472,0.107,0.133,0.76,negative,False,2,6.4,51412.0,48.0,,41543917.0,2 nominations total,Financial District/South Beach
+Stigmata,1999,movie,"Horror, Mystery",-0.1027,0.025,0.037,0.938,negative,False,1,6.2,75471.0,28.0,22.0,50046268.0,6 nominations total,Potrero Hill
+Dope Queens,2021,movie,Drama,0.5856,0.226,0.126,0.649,positive,False,1,,,,,,,Tenderloin
+The Diary of a Teenage Girl,2015,movie,"Comedy, Drama, Romance",0.0,0.0,0.0,1.0,neutral,False,2,6.8,34243.0,87.0,95.0,1477002.0,16 wins & 37 nominations total,Inner Sunset
+Playing Mona Lisa,2000,movie,Comedy,-0.2098,0.108,0.121,0.771,negative,False,3,5.7,998.0,,62.0,,2 wins total,Golden Gate Park
+Guess Who's Coming to Dinner,1967,movie,"Comedy, Drama",0.128,0.023,0.019,0.958,positive,True,5,7.8,52283.0,63.0,71.0,56666667.0,Won 2 Oscars. 11 wins & 25 nominations total,Financial District/South Beach
+A View to a Kill,1985,movie,"Action, Adventure, Thriller",0.631,0.086,0.021,0.894,positive,False,2,6.3,111626.0,40.0,36.0,50327960.0,2 wins & 6 nominations total,Tenderloin
+A Big Fat Family Christmas,2022,movie,"Comedy, Drama, Romance",0.3328,0.09,0.032,0.877,positive,False,4,6.6,862.0,,,,2 nominations,Financial District/South Beach
+Memoirs of an Invisible Man,1992,movie,"Comedy, Romance, Sci-Fi",-0.5574,0.058,0.121,0.822,negative,False,1,6.0,28174.0,48.0,28.0,14358033.0,5 nominations total,Nob Hill
+Freebie and the Bean,1974,movie,"Action, Comedy, Crime",-0.5423,0.075,0.115,0.81,negative,False,7,6.6,3692.0,,23.0,3000000.0,1 win & 2 nominations,Nob Hill
+Dirty Harry,1971,movie,"Action, Crime, Thriller",-0.9774,0.023,0.27,0.707,negative,False,5,7.7,179853.0,87.0,89.0,35988495.0,2 wins & 4 nominations total,Chinatown
+A Night Full of Rain,1978,movie,"Drama, Romance",0.9337,0.183,0.034,0.783,positive,False,6,5.8,426.0,,,,1 nomination total,Chinatown
+By Hook or by Crook,2001,movie,"Crime, Drama, Romance",-0.9022,0.104,0.181,0.716,negative,False,1,5.7,344.0,47.0,67.0,1802.0,7 wins,Mission
+Ballers,2015,series,"Comedy, Drama, Sport",0.3612,0.046,0.0,0.954,positive,False,7,7.7,78575.0,,,,Nominated for 5 Primetime Emmys. 2 wins & 33 nominations total,Nob Hill
+The Last Black Man in San Francisco,2019,movie,Drama,0.05,0.057,0.059,0.884,positive,False,1,7.2,22741.0,82.0,93.0,4515719.0,18 wins & 59 nominations total,Bayview Hunters Point
+Fat Man and Little Boy,1989,movie,"Biography, Drama, History",0.0,0.0,0.0,1.0,neutral,False,1,6.5,9422.0,50.0,50.0,3563162.0,2 nominations total,Hayes Valley
+Contagion,2011,movie,"Drama, Thriller",-0.7717,0.018,0.072,0.91,negative,False,1,6.8,329542.0,70.0,85.0,75658097.0,2 wins & 14 nominations total,Hayes Valley
+Knife Fight,2013,series,Reality-TV,0.9686,0.245,0.048,0.707,positive,False,3,6.2,132.0,,,,,Marina
+The Candidate,1972,movie,"Comedy, Drama",0.8402,0.163,0.025,0.812,positive,True,0,7.0,12114.0,66.0,89.0,,Won 1 Oscar. 3 wins & 1 nomination total,Tenderloin
+The Moon is in Aquarius,2024,movie,Romance,0.9118,0.235,0.0,0.765,positive,False,0,,,,,,,Russian Hill
+Nash Bridges,2021,movie,"Crime, Drama",-0.6124,0.0,0.182,0.818,negative,False,5,5.9,1576.0,,,,1 nomination,Tenderloin
+Shit & Champagne,2020,movie,Comedy,-0.8834,0.035,0.181,0.785,negative,False,1,5.0,237.0,,,,,Mission
+Bitter Melon,2018,movie,"Comedy, Crime, Drama",-0.8918,0.116,0.188,0.696,negative,False,1,5.7,203.0,59.0,86.0,,2 wins,Excelsior
+Silicon Valley,2014,series,Comedy,0.8929,0.257,0.044,0.699,positive,False,5,8.5,180368.0,,,,Won 2 Primetime Emmys. 16 wins & 101 nominations total,Mission Bay
+Attack of the Killer Tomatoes!,1978,movie,"Adventure, Comedy, Horror",-0.91,0.029,0.164,0.807,negative,False,5,4.6,16210.0,9.0,27.0,,1 nomination total,Russian Hill
+Invasion of the Body Snatchers,1978,movie,"Horror, Sci-Fi",0.8074,0.134,0.082,0.784,positive,False,7,7.4,77039.0,75.0,93.0,24946533.0,3 wins & 11 nominations total,Tenderloin
+The Princess Diaries,2001,movie,"Comedy, Family, Romance",0.9366,0.123,0.068,0.809,positive,False,4,6.4,177641.0,52.0,49.0,108248956.0,3 wins & 11 nominations total,Excelsior
+Copycat,1995,movie,"Drama, Mystery, Thriller",-0.9775,0.042,0.192,0.766,negative,False,5,6.6,79811.0,54.0,76.0,32051917.0,2 wins & 1 nomination total,Financial District/South Beach
+Star Trek VI: The Undiscovered Country,1991,movie,"Action, Adventure, Sci-Fi",0.4137,0.12,0.099,0.781,positive,False,6,7.2,84387.0,65.0,84.0,74888996.0,Nominated for 2 Oscars. 2 wins & 9 nominations total,
+Sweet November,2001,movie,"Drama, Romance",-0.9217,0.097,0.15,0.753,negative,False,0,6.7,96869.0,27.0,15.0,25288103.0,3 nominations total,Pacific Heights
+Sudden Impact,1983,movie,"Action, Crime, Thriller",-0.9118,0.029,0.165,0.806,negative,False,5,6.6,51813.0,52.0,51.0,67642693.0,3 nominations total,Nob Hill
+The Etruscan Smile,2018,movie,"Comedy, Drama",0.7003,0.144,0.071,0.785,positive,False,0,6.9,2297.0,54.0,70.0,8213.0,7 wins & 3 nominations total,Treasure Island
+Dawn of the Planet of the Apes,2014,movie,"Action, Adventure, Drama",-0.81,0.072,0.155,0.773,negative,False,3,7.6,508717.0,79.0,91.0,208545589.0,Nominated for 1 Oscar. 17 wins & 48 nominations total,Chinatown
+Super Pumped,2022,series,"Biography, Drama",-0.2023,0.0,0.107,0.893,negative,False,5,7.3,10306.0,,,,,Financial District/South Beach
+The Dead Pool,1988,movie,"Action, Crime, Mystery",-0.9571,0.014,0.131,0.855,negative,False,5,6.3,51942.0,46.0,53.0,37903295.0,,Potrero Hill
+"What's Up, Doc?",1972,movie,"Comedy, Romance",-0.3612,0.114,0.143,0.743,negative,False,4,7.7,28877.0,73.0,88.0,66000000.0,1 win & 1 nomination total,Tenderloin
+Birth of the Dragon,2016,movie,"Action, Biography, Drama",-0.9413,0.035,0.125,0.84,negative,False,4,5.7,9227.0,35.0,25.0,6901965.0,1 win total,Twin Peaks
+Harold and Maude,1971,movie,"Comedy, Drama, Romance",0.5059,0.103,0.11,0.788,positive,False,4,7.8,85774.0,62.0,86.0,,Nominated for 1 BAFTA Award3 wins & 3 nominations total,Golden Gate Park
+Summertime,2015,movie,"Drama, Romance",0.9702,0.204,0.06,0.736,positive,False,0,6.7,5867.0,72.0,91.0,35322.0,3 wins & 8 nominations,Outer Richmond
+Alexander's Ragtime Band,1938,movie,"Drama, Music, Musical",0.8873,0.241,0.161,0.598,positive,True,5,6.8,2353.0,,83.0,,Won 1 Oscar. 1 win & 6 nominations total,Mission
+The OA,2016,series,"Drama, Fantasy, Mystery",-0.1027,0.147,0.153,0.7,negative,False,7,7.8,124749.0,,,,3 wins & 9 nominations total,Noe Valley
+Pushing Dead,2016,movie,"Comedy, Drama",-0.1725,0.102,0.129,0.769,negative,False,1,6.4,524.0,,,,14 wins & 3 nominations total,Hayes Valley
+High Anxiety,1977,movie,"Comedy, Mystery, Thriller",-0.8861,0.035,0.19,0.774,negative,False,2,6.6,24988.0,55.0,74.0,31063038.0,2 nominations total,Golden Gate Park
+Superman,1978,movie,"Action, Adventure, Sci-Fi",-0.875,0.078,0.202,0.72,negative,False,2,7.4,205928.0,82.0,88.0,134478449.0,Nominated for 3 Oscars. 19 wins & 23 nominations total,
+Jexi,2019,movie,"Comedy, Romance, Sci-Fi",0.9444,0.187,0.063,0.75,positive,False,3,6.0,33250.0,39.0,23.0,6546159.0,1 nomination total,North Beach
+Fearless,1993,movie,"Drama, Thriller",-0.7579,0.156,0.221,0.623,negative,False,0,7.0,25885.0,,86.0,6995302.0,Nominated for 1 Oscar. 6 wins & 9 nominations total,Financial District/South Beach
+The Pursuit of Happyness,2006,movie,"Biography, Drama",0.2944,0.07,0.062,0.868,positive,False,1,8.0,614482.0,64.0,67.0,163566459.0,Nominated for 1 Oscar. 12 wins & 26 nominations total,Golden Gate Park
+Magnum Force,1973,movie,"Action, Crime, Mystery",-0.9517,0.039,0.23,0.73,negative,False,5,7.2,69960.0,58.0,69.0,39768000.0,2 nominations total,Tenderloin
+House of Sand and Fog,2003,movie,"Crime, Drama",-0.0516,0.107,0.102,0.791,negative,False,2,7.5,74992.0,71.0,74.0,13040288.0,Nominated for 3 Oscars. 13 wins & 42 nominations total,
+Shang-Chi and the Legend of the Ten Rings,2021,movie,"Action, Adventure, Fantasy",-0.5719,0.0,0.198,0.802,negative,False,6,7.3,483754.0,71.0,92.0,224543292.0,Nominated for 1 Oscar. 19 wins & 71 nominations total,Nob Hill
+The Matrix Resurrections,2021,movie,"Action, Sci-Fi",0.0258,0.063,0.061,0.875,neutral,False,6,5.6,301242.0,63.0,63.0,37686805.0,Nominated for 1 BAFTA Award6 wins & 36 nominations total,Financial District/South Beach
+Budding Prospects,2017,movie,Comedy,0.4404,0.146,0.056,0.798,positive,False,4,6.7,454.0,,,,,Bernal Heights
+Edtv,1999,movie,"Comedy, Drama",0.9815,0.107,0.036,0.857,positive,False,1,6.1,46641.0,49.0,64.0,22431897.0,1 win & 1 nomination total,North Beach
+Star Trek IV: The Voyage Home,1986,movie,"Adventure, Comedy, Sci-Fi",-0.2732,0.095,0.087,0.818,negative,False,6,7.3,96177.0,71.0,81.0,109713132.0,Nominated for 4 Oscars. 4 wins & 19 nominations total,North Beach
+D.O.A.,1949,movie,"Crime, Drama, Film-Noir",-0.7712,0.041,0.123,0.836,negative,False,5,7.2,13762.0,,88.0,,2 wins total,Nob Hill
+Bedazzled,2000,movie,"Comedy, Fantasy",-0.296,0.131,0.095,0.773,negative,False,5,6.1,118653.0,49.0,50.0,37886980.0,1 win & 3 nominations total,Russian Hill
+The Graduate,1967,movie,"Comedy, Drama, Romance",-0.11,0.066,0.07,0.864,negative,True,7,8.0,301414.0,83.0,87.0,104945305.0,Won 1 Oscar. 22 wins & 17 nominations total,Treasure Island
+Fremont,2023,movie,Drama,0.0516,0.061,0.057,0.882,positive,False,0,6.9,4134.0,72.0,98.0,271343.0,7 wins & 13 nominations total,Chinatown
+Boys and Girls,2000,movie,"Comedy, Drama, Romance",0.3612,0.085,0.06,0.855,positive,False,0,5.4,17882.0,29.0,11.0,21799652.0,1 nomination total,North Beach
+Just Like Heaven,2005,movie,"Comedy, Drama, Fantasy",-0.5584,0.059,0.15,0.79,negative,False,1,6.7,125202.0,47.0,54.0,48318130.0,1 win & 1 nomination total,
+I'm a Virgo,2023,series,"Comedy, Drama, Fantasy",0.9313,0.373,0.082,0.545,positive,False,3,7.1,4250.0,,,,1 win & 17 nominations,Nob Hill
+Vertigo,1958,movie,"Mystery, Romance, Thriller",-0.8807,0.049,0.082,0.869,negative,False,3,8.2,456449.0,100.0,93.0,7863310.0,Nominated for 2 Oscars. 9 wins & 8 nominations total,Lincoln Park
+The Pleasure of His Company,1961,movie,Comedy,0.8957,0.107,0.023,0.87,positive,False,5,6.7,914.0,,,,2 nominations,Nob Hill
+Godzilla,2014,movie,"Action, Adventure, Sci-Fi",-0.7642,0.085,0.136,0.779,negative,False,7,6.4,462092.0,62.0,76.0,200676069.0,7 wins & 31 nominations total,North Beach
+A Jitney Elopement,1915,movie,"Short, Comedy",0.6428,0.117,0.0,0.883,positive,False,7,5.9,1464.0,,,,,Castro/Upper Market
+A Man on the Inside,2024,series,"Comedy, Crime",0.0,0.0,0.0,1.0,neutral,False,2,7.6,42370.0,,,,2 wins & 7 nominations total,Tenderloin
+"Play It Again, Sam",1972,movie,"Comedy, Romance",0.8187,0.208,0.114,0.677,positive,False,7,7.6,29533.0,77.0,97.0,,1 win total,Russian Hill
+On the Road,2012,movie,"Adventure, Drama, Romance",0.6808,0.156,0.114,0.729,positive,False,1,6.0,43662.0,56.0,47.0,744296.0,2 wins & 4 nominations,Treasure Island
+Homeward Bound II: Lost in San Francisco,1996,movie,"Adventure, Comedy, Family",-0.4389,0.079,0.102,0.819,negative,False,7,5.9,16950.0,,56.0,32772492.0,3 nominations total,North Beach
+Chu Chu and the Philly Flash,1981,movie,Comedy,0.8705,0.219,0.15,0.632,positive,False,5,4.2,352.0,,,,3 nominations,Nob Hill
+Getting Even with Dad,1994,movie,"Comedy, Crime, Family",0.4767,0.09,0.047,0.863,positive,False,1,4.9,9160.0,31.0,3.0,18869594.0,2 nominations total,Financial District/South Beach
+Interview with the Vampire,1994,movie,"Drama, Fantasy, Horror",-0.949,0.066,0.211,0.723,negative,False,2,7.5,372902.0,62.0,66.0,105264608.0,Nominated for 2 Oscars. 24 wins & 34 nominations total,Financial District/South Beach
+Forrest Gump,1994,movie,"Drama, Romance",0.9932,0.285,0.039,0.676,positive,True,0,8.8,2477413.0,82.0,75.0,330455270.0,Won 6 Oscars. 51 wins & 74 nominations total,Marina
+To the Ends of the Earth,1948,movie,"Crime, Film-Noir, Thriller",-0.7351,0.058,0.091,0.851,negative,False,4,6.9,886.0,,,,1 nomination,
+Doctor Dolittle,1998,movie,"Comedy, Family, Fantasy",-0.7902,0.069,0.114,0.817,negative,False,7,5.4,107260.0,46.0,44.0,144156605.0,4 wins & 10 nominations total,North Beach
+Haiku Tunnel,2001,movie,Comedy,-0.2525,0.099,0.099,0.801,negative,False,7,6.1,1349.0,51.0,60.0,92723.0,,
+When a Man Loves a Woman,1994,movie,"Drama, Romance",0.5719,0.179,0.0,0.821,positive,False,2,6.6,24364.0,,68.0,50021959.0,4 nominations total,Russian Hill
+Sausalito,2000,movie,Romance,0.9253,0.155,0.109,0.736,positive,False,6,5.9,348.0,,,,,Castro/Upper Market
+The Towering Inferno,1974,movie,"Action, Drama, Thriller",0.0516,0.119,0.116,0.765,positive,True,5,7.0,52240.0,69.0,69.0,116000000.0,Won 3 Oscars. 13 wins & 14 nominations total,Financial District/South Beach
+Romeo Must Die,2000,movie,"Action, Crime, Thriller",-0.8947,0.092,0.197,0.711,negative,False,7,6.1,76698.0,52.0,33.0,55973336.0,2 wins & 7 nominations total,Chinatown
+Foul Play,1978,movie,"Comedy, Mystery, Thriller",-0.6932,0.078,0.102,0.819,negative,False,6,6.8,18797.0,45.0,73.0,44999621.0,Nominated for 1 Oscar. 9 nominations total,Noe Valley
+The Last Thing He Told Me,2023,series,"Drama, Mystery, Thriller",0.1027,0.095,0.079,0.826,positive,False,7,6.6,20775.0,,,,1 win & 3 nominations total,Mission Bay
+Maintenance Required,2025,movie,"Comedy, Romance",-0.4588,0.0,0.094,0.906,negative,False,7,5.2,3453.0,,38.0,,,Marina
+So I Married an Axe Murderer,1993,movie,"Comedy, Romance",0.0798,0.149,0.16,0.691,positive,False,3,6.5,44793.0,54.0,55.0,11585483.0,,Tenderloin
+Petulia,1968,movie,"Drama, Romance",0.8102,0.077,0.027,0.896,positive,False,2,6.9,3507.0,,85.0,,4 nominations,Nob Hill
+The Assassination of Richard Nixon,2004,movie,"Biography, Crime, Drama",-0.9738,0.028,0.174,0.797,negative,False,4,6.9,26345.0,63.0,67.0,708776.0,2 wins & 4 nominations total,Nob Hill
+Steve Jobs,2015,movie,"Biography, Drama",0.6597,0.101,0.027,0.872,positive,False,6,7.2,186294.0,82.0,85.0,17766658.0,Nominated for 2 Oscars. 28 wins & 117 nominations total,Chinatown
+"Hello Frisco, Hello",1943,movie,Musical,0.9742,0.076,0.036,0.888,positive,True,6,6.5,553.0,,,3400000.0,Won 1 Oscar. 1 win & 1 nomination total,
+Final Analysis,1992,movie,"Drama, Thriller",-0.0387,0.064,0.065,0.871,neutral,False,7,5.9,15770.0,40.0,57.0,28590665.0,1 win & 4 nominations total,Chinatown
+Big Eyes,2014,movie,"Biography, Crime, Drama",-0.7469,0.045,0.087,0.868,negative,False,5,7.0,102759.0,62.0,72.0,14482031.0,Nominated for 2 BAFTA 3 wins & 18 nominations total,Financial District/South Beach
+Golden Gate,1993,movie,"Crime, Drama",0.8873,0.191,0.031,0.778,positive,False,0,5.3,954.0,,0.0,395105.0,,Haight Ashbury
+Twisted,2004,movie,"Crime, Drama, Mystery",-0.9623,0.072,0.141,0.786,negative,False,6,5.3,24427.0,26.0,2.0,25198598.0,1 win total,Mission Bay
+"Smile Again, Jenny Lee",2015,movie,"Drama, Mystery",-0.2263,0.084,0.147,0.769,negative,False,1,,,,,,1 win,Financial District/South Beach
+Blindspotting,2021,series,"Comedy, Crime, Drama",-0.8271,0.057,0.224,0.719,negative,False,1,6.6,1790.0,,,,Won 1 Primetime Emmy. 1 win & 16 nominations total,Financial District/South Beach
+The Woman in Red,1984,movie,"Comedy, Romance",0.7959,0.202,0.056,0.742,positive,True,4,6.0,19221.0,55.0,32.0,25308147.0,Won 1 Oscar. 2 wins & 1 nomination total,Marina
+The Game,1997,movie,"Drama, Mystery, Thriller",-0.723,0.128,0.164,0.708,negative,False,5,7.7,465745.0,63.0,77.0,48323648.0,1 nomination total,Financial District/South Beach
+Night of Henna,2005,movie,"Comedy, Romance",0.9926,0.15,0.0,0.85,positive,False,2,5.9,38.0,35.0,0.0,16027.0,,
+Ant-Man and the Wasp,2018,movie,"Action, Adventure, Comedy",-0.7269,0.053,0.122,0.825,negative,False,0,7.0,490470.0,70.0,87.0,216648740.0,2 wins & 21 nominations total,Russian Hill
+The Bachelor,1999,movie,"Comedy, Romance",-0.6604,0.041,0.059,0.9,negative,False,4,5.1,19198.0,31.0,9.0,21760240.0,1 win & 2 nominations total,North Beach
+Jade,1995,movie,"Crime, Drama, Thriller",0.0258,0.093,0.091,0.816,neutral,False,7,5.3,15174.0,33.0,18.0,9851610.0,2 nominations total,Russian Hill
+Venom: Let There Be Carnage,2021,movie,"Action, Adventure, Crime",-0.875,0.08,0.198,0.723,negative,False,6,5.9,300820.0,49.0,58.0,213550366.0,1 win & 6 nominations total,Marina
+Dopamine,2003,movie,"Comedy, Drama, Romance",0.0,0.0,0.0,1.0,neutral,False,6,5.9,1164.0,52.0,50.0,69544.0,1 win & 1 nomination,Financial District/South Beach
+The Zodiac,2005,movie,"Crime, Drama, Horror",-0.9712,0.036,0.284,0.68,negative,False,5,5.3,7629.0,21.0,24.0,45148.0,,
+When We Rise,2017,series,Drama,-0.5528,0.073,0.082,0.845,negative,False,6,7.5,3472.0,,,,2 wins & 2 nominations total,Castro/Upper Market
+Point Blank,1967,movie,"Crime, Drama, Thriller",0.431,0.088,0.052,0.86,positive,False,1,7.3,24807.0,86.0,93.0,,1 win total,
+Bicentennial Man,1999,movie,"Drama, Romance, Sci-Fi",-0.2263,0.061,0.073,0.866,negative,False,5,6.9,131241.0,42.0,38.0,58223861.0,Nominated for 1 Oscar. 2 wins & 8 nominations total,Treasure Island
+Birdman of Alcatraz,1962,movie,"Biography, Crime, Drama",-0.6705,0.069,0.129,0.802,negative,False,0,7.8,20601.0,76.0,88.0,,Nominated for 4 Oscars. 4 wins & 12 nominations total,North Beach
+Need for Speed,2014,movie,"Action, Crime, Drama",-0.9537,0.068,0.208,0.724,negative,False,6,6.4,186032.0,39.0,23.0,43577636.0,1 win & 6 nominations total,
+Metro,1997,movie,"Action, Comedy, Crime",-0.7351,0.101,0.159,0.74,negative,False,2,5.6,29975.0,41.0,17.0,32000301.0,1 nomination total,Nob Hill
+The Core,2003,movie,"Action, Adventure, Sci-Fi",-0.6124,0.049,0.135,0.816,negative,False,6,5.5,114588.0,48.0,39.0,31186896.0,,
+Jack,1996,movie,"Comedy, Drama, Fantasy",-0.3182,0.061,0.107,0.832,negative,False,7,5.8,66513.0,31.0,17.0,58620973.0,6 nominations total,
+Fairyland,2023,movie,Drama,0.1779,0.091,0.0,0.909,positive,False,2,6.6,778.0,73.0,98.0,,1 win & 2 nominations total,Mission
+The Maltese Falcon,1941,movie,"Crime, Drama, Film-Noir",-0.9869,0.023,0.214,0.763,negative,False,3,7.9,173603.0,97.0,99.0,18180.0,Nominated for 3 Oscars. 8 wins & 4 nominations total,
+Heart Beat,1980,movie,Drama,0.4404,0.146,0.0,0.854,positive,False,4,5.7,753.0,,20.0,954046.0,,Russian Hill
+About a Boy,2014,series,"Comedy, Drama, Romance",0.9938,0.273,0.058,0.669,positive,False,0,7.4,8871.0,,,,1 win & 1 nomination,Presidio
+Chan Is Missing,1982,movie,"Drama, Mystery",-0.25,0.058,0.102,0.841,negative,False,7,7.1,2063.0,85.0,96.0,,2 wins & 1 nomination total,Chinatown
+Chef Dynasty: House of Fang,2022,series,Reality-TV,0.7003,0.171,0.0,0.829,positive,False,5,3.8,111.0,,,,,Financial District/South Beach
+They Call Me Mister Tibbs!,1970,movie,"Crime, Drama, Mystery",-0.9442,0.0,0.335,0.665,negative,False,3,6.0,4728.0,,50.0,5123000.0,,
+Dreams,2025,movie,"Drama, Romance, Thriller",0.7269,0.289,0.0,0.711,positive,False,2,5.8,1167.0,,68.0,,4 nominations total,Mission
+Cherish,2002,movie,"Comedy, Drama, Mystery",-0.6564,0.09,0.127,0.783,negative,False,1,6.6,2972.0,51.0,51.0,179751.0,2 nominations,Mission
+City of Angels,1998,movie,"Drama, Fantasy, Romance",0.7543,0.082,0.021,0.897,positive,False,6,6.7,134167.0,54.0,,78685114.0,10 wins & 14 nominations total,Tenderloin
+Crackers,1984,movie,"Adventure, Comedy, Crime",-0.2263,0.035,0.047,0.917,negative,False,2,5.2,1583.0,,0.0,129268.0,2 nominations,Mission
+The Doctor,1991,movie,Drama,0.6437,0.13,0.059,0.81,positive,False,5,6.9,6212.0,,81.0,38120905.0,3 nominations total,
+Beautiful Boy,2018,movie,"Biography, Drama",0.5719,0.153,0.069,0.778,positive,False,0,7.4,117984.0,62.0,68.0,7649973.0,Nominated for 1 BAFTA Award10 wins & 31 nominations total,Tenderloin
+Experiment in Terror,1962,movie,"Crime, Mystery, Thriller",-0.8573,0.084,0.157,0.759,negative,False,2,7.3,7180.0,69.0,100.0,,1 nomination total,Bayview Hunters Point
+Phenomenon,1996,movie,"Drama, Fantasy, Romance",0.8591,0.136,0.065,0.799,positive,False,3,6.5,88809.0,42.0,47.0,104636382.0,7 wins & 8 nominations total,Treasure Island
+Innerspace,1987,movie,"Action, Adventure, Comedy",-0.9737,0.041,0.135,0.824,negative,True,1,6.8,68268.0,66.0,82.0,25893810.0,Won 1 Oscar. 2 wins & 5 nominations total,North Beach
+Mrs. Doubtfire,1993,movie,"Comedy, Drama, Family",-0.5605,0.066,0.089,0.846,negative,True,7,7.1,312013.0,54.0,70.0,219195243.0,Won 1 Oscar. 11 wins & 10 nominations total,Chinatown
+Hulk,2003,movie,"Action, Sci-Fi",-0.5927,0.065,0.138,0.798,negative,False,4,5.7,290412.0,54.0,63.0,132177234.0,3 wins & 15 nominations total,North Beach
+Zodiac,2007,movie,"Crime, Drama, Mystery",-0.8316,0.039,0.146,0.815,negative,False,6,7.7,664282.0,79.0,90.0,33080084.0,3 wins & 71 nominations total,South of Market
+Flower Drum Song,1961,movie,"Comedy, Musical, Romance",0.6652,0.102,0.033,0.865,positive,False,2,6.9,3845.0,,79.0,,Nominated for 5 Oscars. 1 win & 12 nominations total,
+Earth Mama,2023,movie,Drama,0.0,0.0,0.0,1.0,neutral,False,6,6.6,1206.0,84.0,97.0,,Won 1 BAFTA Award7 wins & 13 nominations total,Treasure Island
+Woman on the Run,1950,movie,"Crime, Drama, Film-Noir",-0.9371,0.019,0.181,0.8,negative,False,5,7.2,4980.0,,88.0,,,South of Market
+Until the End of the World,1991,movie,"Action, Drama, Sci-Fi",-0.7717,0.086,0.12,0.794,negative,False,2,6.8,12033.0,63.0,89.0,829625.0,2 wins & 1 nomination total,North Beach
+The Enforcer,1976,movie,"Action, Crime, Thriller",-0.9608,0.019,0.219,0.763,negative,False,5,6.7,52658.0,58.0,69.0,46236000.0,2 nominations total,Mission
+Mona Lisa Smile,2003,movie,Drama,0.886,0.119,0.018,0.863,positive,False,0,6.6,97171.0,45.0,33.0,63860942.0,6 nominations total,
+I Remember Mama,1948,movie,"Drama, Family",0.1531,0.077,0.062,0.861,positive,False,6,7.9,6152.0,,100.0,,Nominated for 5 Oscars. 1 win & 8 nominations total,Nob Hill
+Dim Sum: A Little Bit of Heart,1985,movie,"Comedy, Drama",0.8905,0.169,0.107,0.724,positive,False,4,6.6,646.0,,90.0,,Nominated for 1 BAFTA Award3 nominations total,Chinatown
+24 Hours on Craigslist,2005,movie,"Documentary, Biography, Comedy",0.4215,0.118,0.0,0.882,positive,False,0,5.3,218.0,47.0,50.0,,,
+The Net,1995,movie,"Action, Crime, Drama",-0.5106,0.05,0.081,0.869,negative,False,4,6.0,79240.0,51.0,44.0,50727965.0,2 wins total,Financial District/South Beach
+Days of Wine and Roses,1962,movie,Drama,0.9639,0.185,0.037,0.778,positive,True,0,7.8,14336.0,74.0,100.0,8123077.0,Won 1 Oscar. 10 wins & 13 nominations total,
+George of the Jungle,1997,movie,"Action, Adventure, Comedy",0.8271,0.17,0.073,0.756,positive,False,3,5.6,88109.0,53.0,56.0,105263257.0,1 win & 3 nominations total,Russian Hill
+Heart and Souls,1993,movie,"Comedy, Drama, Fantasy",0.8275,0.098,0.096,0.806,positive,False,4,7.0,19299.0,56.0,58.0,16589540.0,1 win & 10 nominations,Pacific Heights
+40 Days and 40 Nights,2002,movie,"Comedy, Romance",0.9589,0.205,0.073,0.722,positive,False,5,5.6,77682.0,53.0,40.0,37950822.0,1 win & 2 nominations total,North Beach
+Vegas in Space,1991,movie,"Comedy, Sci-Fi",0.8878,0.143,0.02,0.836,positive,False,7,4.5,466.0,,,,,Mission
+The Lady from Shanghai,1947,movie,"Crime, Drama, Film-Noir",-0.9709,0.055,0.199,0.746,negative,False,5,7.5,35285.0,,86.0,,1 win total,Chinatown
+Down Periscope,1996,movie,Comedy,-0.34,0.053,0.114,0.833,negative,False,2,6.2,29370.0,39.0,11.0,25785603.0,,
+Sudden Fear,1952,movie,"Film-Noir, Thriller",0.9169,0.165,0.03,0.805,positive,False,2,7.5,7830.0,,92.0,24476.0,Nominated for 4 Oscars. 2 wins & 5 nominations total,Marina
+Fandom,2004,movie,"Comedy, Drama",0.9476,0.155,0.017,0.827,positive,False,3,7.1,53.0,,,,,
+The Matrix,1999,movie,"Action, Sci-Fi",-0.7814,0.066,0.155,0.779,negative,True,6,8.7,2228203.0,73.0,83.0,177559005.0,Won 4 Oscars. 42 wins & 52 nominations total,Treasure Island
+Maxie,1985,movie,"Comedy, Fantasy",0.6249,0.077,0.068,0.855,positive,False,1,5.4,1207.0,,0.0,2564278.0,1 win & 4 nominations,Hayes Valley
+What the #$*! Do We (K)now!?,2004,movie,"Documentary, Comedy, Drama",0.8856,0.142,0.027,0.832,positive,False,7,5.2,13943.0,38.0,34.0,10942306.0,2 wins total,
+Kamikaze Hearts,1986,movie,Drama,-0.8841,0.08,0.237,0.683,negative,False,2,6.3,338.0,,,6669.0,1 win,Castro/Upper Market
+Dr. Dolittle 2,2001,movie,"Comedy, Family, Fantasy",0.9904,0.272,0.008,0.721,positive,False,7,4.8,49701.0,49.0,41.0,112952899.0,3 wins & 6 nominations total,Pacific Heights
+Take the Money and Run,1969,movie,"Comedy, Crime",-0.872,0.048,0.215,0.737,negative,False,0,7.2,32507.0,67.0,91.0,,3 nominations total,Bernal Heights
+Pretty Woman,1990,movie,"Comedy, Romance",0.9828,0.118,0.022,0.86,positive,False,6,7.1,401452.0,51.0,65.0,178406268.0,Nominated for 1 Oscar. 8 wins & 11 nominations total,
+The Nightmare Before Christmas,1993,movie,"Animation, Adventure, Family",-0.3291,0.026,0.06,0.914,negative,False,7,7.9,409668.0,82.0,95.0,94707435.0,Nominated for 1 Oscar. 7 wins & 17 nominations total,
+The Bridge,2006,movie,"Documentary, Drama",-0.9632,0.093,0.218,0.689,negative,False,7,7.2,12384.0,58.0,67.0,179780.0,2 nominations,
+San Francisco,1936,movie,"Drama, Music, Romance",0.8271,0.098,0.079,0.823,positive,True,2,7.1,6250.0,,92.0,,Won 1 Oscar. 3 wins & 6 nominations total,South of Market
+The Jazz Singer,1927,movie,"Drama, Music, Musical",0.5077,0.139,0.116,0.745,positive,False,1,6.4,11586.0,66.0,77.0,,Nominated for 1 Oscar. 3 wins & 1 nomination total,Chinatown
+The Age of Adaline,2015,movie,"Drama, Fantasy, Romance",0.899,0.18,0.043,0.777,positive,False,7,7.2,224753.0,51.0,55.0,42629776.0,1 win & 10 nominations total,Chinatown
+Sneakers,1992,movie,"Comedy, Crime, Drama",-0.5994,0.05,0.084,0.866,negative,False,3,7.1,67631.0,65.0,80.0,51432691.0,2 nominations total,Financial District/South Beach
+Street Music,1981,movie,Drama,0.7096,0.247,0.0,0.753,positive,False,3,7.2,56.0,,,,1 nomination,
+Sphere,1998,movie,"Mystery, Sci-Fi, Thriller",0.7536,0.094,0.0,0.906,positive,False,7,6.1,118038.0,35.0,13.0,37020277.0,3 nominations total,
+The Other Sister,1999,movie,"Comedy, Drama, Romance",0.743,0.111,0.066,0.823,positive,False,0,6.4,13224.0,28.0,29.0,27807627.0,2 nominations total,Marina
+Class Action,1991,movie,"Drama, Thriller",-0.5719,0.089,0.138,0.773,negative,False,0,6.4,8699.0,58.0,78.0,24277858.0,1 nomination total,Tenderloin
+Beaches,1988,movie,"Comedy, Drama, Music",0.9633,0.246,0.029,0.725,positive,False,3,7.0,29481.0,46.0,41.0,57041866.0,Nominated for 1 Oscar. 2 wins & 6 nominations total,
+It Came from Beneath the Sea,1955,movie,"Horror, Sci-Fi",-0.6757,0.0,0.08,0.92,negative,False,6,5.9,6690.0,,60.0,,,Presidio
+Love & Taxes,2015,movie,"Comedy, Romance",0.9509,0.231,0.054,0.715,positive,False,6,7.4,58.0,69.0,,33150.0,,Mission
+Big Trouble in Little China,1986,movie,"Action, Adventure, Comedy",0.9169,0.117,0.035,0.848,positive,False,4,7.2,165944.0,53.0,72.0,11100000.0,1 win & 1 nomination total,
+Quicksilver,1986,movie,"Crime, Drama, Thriller",-0.6808,0.034,0.102,0.864,negative,False,1,5.7,5537.0,43.0,13.0,7634909.0,,Financial District/South Beach
+Dying Young,1991,movie,"Drama, Romance",-0.4939,0.118,0.177,0.704,negative,False,0,6.0,18051.0,,25.0,33669178.0,3 nominations total,
+Casualties of War,1989,movie,"Action, Crime, Drama",-0.8807,0.106,0.233,0.661,negative,False,1,7.1,50600.0,75.0,82.0,18671317.0,1 win & 5 nominations total,Castro/Upper Market
+The Californians,2005,movie,Drama,0.9246,0.17,0.065,0.766,positive,False,0,4.7,488.0,,,,,
+50 First Dates,2004,movie,"Comedy, Drama, Romance",0.0,0.112,0.136,0.752,neutral,False,0,6.8,411265.0,48.0,45.0,120908074.0,6 wins & 10 nominations total,North Beach
+What Dreams May Come,1998,movie,"Drama, Fantasy, Romance",-0.8851,0.154,0.17,0.677,negative,True,6,7.0,117520.0,44.0,51.0,55382927.0,Won 1 Oscar. 7 wins & 2 nominations total,Treasure Island
+Sonic the Hedgehog,2020,movie,"Action, Adventure, Comedy",0.8885,0.176,0.061,0.763,positive,False,4,6.5,190166.0,47.0,64.0,148974665.0,3 wins & 12 nominations total,Financial District/South Beach
+James and the Giant Peach,1996,movie,"Animation, Adventure, Family",0.7543,0.135,0.071,0.795,positive,False,0,6.7,78186.0,78.0,91.0,28946127.0,Nominated for 1 Oscar. 4 wins & 13 nominations total,
+Alcatraz,2012,series,"Action, Crime, Drama",-0.8957,0.0,0.185,0.815,negative,False,6,6.9,40700.0,,,,2 wins & 6 nominations total,
+After the Thin Man,1936,movie,"Comedy, Crime, Mystery",-0.9718,0.041,0.207,0.753,negative,False,6,7.6,12988.0,76.0,96.0,,Nominated for 1 Oscar. 4 wins & 1 nomination total,North Beach
+Never Die Twice,2001,movie,Sci-Fi,-0.6486,0.0,0.142,0.858,negative,False,4,6.2,27.0,,,,,Hayes Valley
+Clickbait,2021,series,"Crime, Drama, Mystery",-0.8934,0.0,0.3,0.7,negative,False,6,7.2,65197.0,,,,2 wins & 6 nominations total,Chinatown
+The Love Bug,1968,movie,"Comedy, Family, Sport",0.9008,0.081,0.049,0.87,positive,False,0,6.5,18779.0,48.0,78.0,51264000.0,1 win & 2 nominations total,
+The Lineup,1958,movie,"Crime, Drama, Film-Noir",-0.899,0.025,0.115,0.86,negative,False,7,7.3,4708.0,,86.0,,1 nomination,Hayes Valley
+Indiana Jones and the Last Crusade,1989,movie,"Action, Adventure",0.7003,0.114,0.059,0.826,positive,True,4,8.2,858909.0,65.0,84.0,197171806.0,Won 1 Oscar. 9 wins & 24 nominations total,Treasure Island
+American Graffiti,1973,movie,"Comedy, Drama",0.9896,0.151,0.031,0.818,positive,False,7,7.4,104185.0,97.0,95.0,115000000.0,Nominated for 5 Oscars. 9 wins & 13 nominations total,Lone Mountain/USF
+The Last of the Gladiators,1988,movie,Documentary,0.296,0.159,0.083,0.759,positive,False,4,7.9,38.0,,,,,
+Sister Act 2: Back in the Habit,1993,movie,"Comedy, Family, Music",-0.4033,0.072,0.101,0.827,negative,False,1,5.7,63173.0,38.0,19.0,57319029.0,1 win & 3 nominations total,Financial District/South Beach
+Bee Season,2005,movie,"Drama, Family",0.736,0.062,0.038,0.9,positive,False,0,5.5,7358.0,54.0,44.0,1180560.0,1 nomination total,
+Happy Gilmore,1996,movie,"Comedy, Sport",0.9355,0.253,0.031,0.716,positive,False,1,7.0,303515.0,31.0,65.0,39041354.0,1 win & 4 nominations total,
+Mother,1996,movie,"Comedy, Drama",0.6369,0.214,0.083,0.704,positive,False,3,6.9,7026.0,76.0,87.0,19145198.0,3 wins & 5 nominations,
+Swing,2003,movie,"Comedy, Fantasy, Romance",-0.4215,0.0,0.219,0.781,negative,False,6,5.6,205.0,36.0,42.0,2509.0,2 wins,Nob Hill
+Woman on Top,2000,movie,"Comedy, Fantasy, Romance",0.7891,0.11,0.06,0.83,positive,False,7,5.3,11097.0,41.0,35.0,5020111.0,3 nominations total,Hayes Valley
+On the Beach,1959,movie,"Drama, Romance, Sci-Fi",0.8074,0.142,0.068,0.79,positive,False,1,7.1,15437.0,55.0,78.0,,Nominated for 2 Oscars. 4 wins & 9 nominations total,
+Escape from Alcatraz,1979,movie,"Biography, Crime, Drama",-0.0,0.159,0.136,0.705,neutral,False,5,7.5,161446.0,76.0,97.0,43000000.0,,
+Tweek City,2005,movie,Drama,-0.6369,0.06,0.111,0.829,negative,False,6,3.9,187.0,,,,,
+Around the Fire,1998,movie,Drama,0.9371,0.123,0.082,0.795,positive,False,1,5.2,851.0,,,,1 win total,Sunset/Parkside
+Dream for an Insomniac,1996,movie,"Romance, Comedy, Drama",0.9135,0.214,0.085,0.701,positive,False,1,5.9,3070.0,,50.0,24727.0,,Presidio
+Gentleman Jim,1942,movie,"Biography, Drama, Romance",0.891,0.166,0.067,0.768,positive,False,3,7.5,4256.0,,100.0,,,South of Market
+Seven Girlfriends,1999,movie,"Comedy, Romance",0.2617,0.108,0.101,0.791,positive,False,2,5.7,1570.0,,50.0,,5 wins & 1 nomination total,
+The Joy Luck Club,1993,movie,Drama,0.296,0.142,0.111,0.747,positive,False,4,7.7,19559.0,84.0,86.0,32901136.0,Nominated for 1 BAFTA Award4 wins & 5 nominations total,Chinatown
+Psych-Out,1968,movie,Drama,0.875,0.152,0.034,0.814,positive,False,1,5.9,3156.0,,,,,
+Big Sur,2013,movie,"Drama, Romance",0.9371,0.145,0.077,0.778,positive,False,1,5.7,2142.0,49.0,44.0,37466.0,1 win & 3 nominations total,North Beach
+Marnie,1964,movie,"Crime, Drama, Mystery",-0.9505,0.045,0.147,0.807,negative,False,2,7.1,57155.0,73.0,78.0,,2 nominations total,Mission Bay
+True Believer,1989,movie,"Crime, Drama, Mystery",-0.0227,0.085,0.099,0.816,neutral,False,2,6.7,5909.0,64.0,96.0,8742750.0,1 win & 1 nomination total,
+Greed,1924,movie,"Drama, Thriller, Western",-0.7964,0.063,0.108,0.83,negative,False,5,8.0,11018.0,,96.0,,3 wins,Hayes Valley
+Just One Night,2000,movie,Comedy,0.765,0.157,0.068,0.775,positive,False,7,5.5,328.0,,31.0,,1 nomination,Financial District/South Beach
+48 Hrs.,1982,movie,"Action, Comedy, Crime",-0.0772,0.153,0.145,0.702,negative,False,7,6.9,92461.0,71.0,92.0,78868508.0,3 wins & 2 nominations total,
+Pal Joey,1957,movie,"Drama, Musical, Romance",0.9239,0.201,0.049,0.75,positive,False,7,6.6,6156.0,,75.0,,Nominated for 4 Oscars. 3 wins & 7 nominations total,South of Market
+The Laughing Policeman,1973,movie,"Crime, Drama, Thriller",-0.9294,0.047,0.089,0.864,negative,False,3,6.4,3380.0,,59.0,,,
+Rollerball,2002,movie,"Action, Sci-Fi, Sport",-0.8074,0.052,0.121,0.827,negative,False,2,3.1,30030.0,14.0,56.0,18990798.0,5 wins & 3 nominations,
+Under the Tuscan Sun,2003,movie,"Comedy, Drama, Romance",0.9919,0.149,0.019,0.831,positive,False,6,6.8,64390.0,52.0,62.0,43610723.0,5 nominations total,Castro/Upper Market
+Pacific Heights,1990,movie,"Drama, Mystery, Thriller",-0.948,0.038,0.094,0.867,negative,False,5,6.4,24666.0,55.0,53.0,29381956.0,,Financial District/South Beach
+Herbie Rides Again,1974,movie,"Comedy, Family, Fantasy",-0.4767,0.018,0.054,0.928,negative,False,0,5.7,9425.0,49.0,83.0,38229000.0,1 nomination total,Financial District/South Beach
+The Fan,1996,movie,"Action, Drama, Sport",0.0772,0.161,0.121,0.718,positive,False,4,5.9,52838.0,32.0,38.0,18626419.0,1 win & 3 nominations total,Bayview Hunters Point
+The Times of Harvey Milk,1984,movie,"Documentary, Biography, History",-0.2263,0.05,0.075,0.874,negative,True,6,8.2,7018.0,,96.0,13801.0,Won 1 Oscar. 11 wins & 2 nominations total,Castro/Upper Market
+The House on Telegraph Hill,1951,movie,"Crime, Drama, Film-Noir",0.5712,0.123,0.075,0.802,positive,False,7,6.9,4025.0,,,,Nominated for 1 Oscar. 1 nomination total,North Beach
+The Parent Trap,1998,movie,"Adventure, Comedy, Drama",0.4215,0.028,0.0,0.972,positive,False,0,6.7,165056.0,63.0,87.0,66308518.0,2 wins & 7 nominations total,Treasure Island
+Hemingway & Gellhorn,2012,movie,"Biography, Drama, Romance",0.882,0.275,0.107,0.618,positive,False,5,6.3,10643.0,,49.0,,Won 2 Primetime Emmys. 7 wins & 46 nominations total,Bayview Hunters Point
+Midnight Lace,1960,movie,"Crime, Drama, Mystery",-0.9032,0.0,0.107,0.893,negative,False,7,6.8,6332.0,60.0,83.0,7400000.0,Nominated for 1 Oscar. 5 nominations total,Nob Hill
+The Birds,1963,movie,"Drama, Horror, Mystery",-0.9287,0.062,0.148,0.791,negative,False,6,7.6,218791.0,90.0,95.0,,Nominated for 1 Oscar. 5 wins & 7 nominations total,Tenderloin
+Red Diaper Baby,2004,movie,Comedy,0.1779,0.124,0.0,0.876,positive,False,3,7.9,30.0,,,,,Marina
+The Fog of War,2003,movie,"Documentary, Biography, History",-0.9337,0.018,0.2,0.782,negative,True,6,8.1,25488.0,87.0,96.0,4198566.0,Won 1 Oscar. 14 wins & 16 nominations total,
+The Ten Commandments,1956,movie,"Adventure, Drama, Family",0.8658,0.125,0.047,0.828,positive,True,1,7.9,83457.0,,84.0,65500000.0,Won 1 Oscar. 13 wins & 12 nominations total,North Beach
+Tucker: The Man and His Dream,1988,movie,"Biography, Comedy, Drama",0.8126,0.15,0.047,0.803,positive,False,6,6.9,22702.0,76.0,82.0,19656113.0,Nominated for 3 Oscars. 8 wins & 9 nominations total,Tenderloin
+Dark Passage,1947,movie,"Drama, Film-Noir, Thriller",-0.564,0.117,0.113,0.77,negative,False,1,7.5,23357.0,68.0,90.0,,,North Beach
+Hereafter,2010,movie,"Drama, Fantasy, Romance",-0.6101,0.017,0.071,0.913,negative,False,7,6.5,98150.0,56.0,48.0,32746941.0,Nominated for 1 Oscar. 4 wins & 15 nominations total,Marina
+Tin Cup,1996,movie,"Comedy, Drama, Romance",-0.7551,0.07,0.108,0.822,negative,False,0,6.4,55270.0,60.0,73.0,53854588.0,4 nominations total,
+The Caine Mutiny,1954,movie,"Drama, War",-0.8555,0.078,0.158,0.764,negative,False,4,7.7,32015.0,63.0,95.0,21750000.0,Nominated for 7 Oscars. 2 wins & 13 nominations total,
+Hard to Hold,1984,movie,"Drama, Music",0.8355,0.132,0.061,0.807,positive,False,5,4.8,770.0,,,11113806.0,,Nob Hill
+Raising Cain,1992,movie,"Crime, Drama, Horror",-0.3182,0.036,0.068,0.897,negative,False,3,6.1,18813.0,42.0,64.0,21370057.0,5 nominations total,
+Thief of Hearts,1984,movie,"Crime, Drama, Thriller",-0.6808,0.062,0.169,0.769,negative,False,2,5.8,2013.0,,14.0,10435015.0,1 nomination total,
+American Yearbook,2004,movie,"Drama, Thriller",-0.7351,0.11,0.212,0.678,negative,False,1,5.7,118.0,,,,1 win,
+9 to 5,1980,movie,Comedy,-0.62,0.044,0.1,0.856,negative,False,3,6.9,42080.0,58.0,70.0,103290500.0,Nominated for 1 Oscar. 4 wins & 8 nominations total,Financial District/South Beach
+Rent,2005,movie,"Drama, Musical, Romance",-0.25,0.108,0.13,0.763,negative,False,6,6.8,57179.0,53.0,46.0,29077547.0,1 win & 22 nominations total,Treasure Island
+Confessions of a Burning Man,2003,movie,Documentary,0.992,0.217,0.037,0.746,positive,False,1,6.8,62.0,37.0,30.0,,,
+Flubber,1997,movie,"Comedy, Family, Sci-Fi",0.8912,0.159,0.055,0.786,positive,False,0,5.3,99482.0,38.0,24.0,92977226.0,3 wins & 2 nominations total,Treasure Island
+The Master,2012,movie,Drama,-0.7245,0.048,0.069,0.882,negative,False,1,7.1,197015.0,86.0,85.0,16377274.0,Nominated for 3 Oscars. 75 wins & 187 nominations total,Financial District/South Beach
+Susan Slade,1961,movie,Drama,0.7515,0.108,0.069,0.823,positive,False,1,6.3,964.0,,,,,Mission Bay
+Julie and Jack,2003,movie,"Drama, Romance, Sci-Fi",0.9901,0.328,0.024,0.649,positive,False,6,1.7,718.0,,,,1 win,
+Jagged Edge,1985,movie,"Drama, Mystery, Thriller",-0.7867,0.131,0.223,0.646,negative,False,3,6.5,17401.0,60.0,79.0,40491165.0,Nominated for 1 Oscar. 4 nominations total,Tenderloin
+Shoot the Moon,1982,movie,Drama,-0.7003,0.058,0.163,0.779,negative,False,5,6.8,3156.0,68.0,86.0,9217530.0,Nominated for 1 BAFTA Award7 nominations total,Nob Hill
+Nina Takes a Lover,1994,movie,"Comedy, Drama, Romance",0.0,0.0,0.0,1.0,neutral,False,7,5.4,749.0,,40.0,189509.0,1 nomination,
+Another 48 Hrs.,1990,movie,"Action, Comedy, Crime",-0.5112,0.068,0.128,0.803,negative,False,1,5.9,47421.0,23.0,19.0,80818974.0,,
+GOD IS A COMMUNIST!?* (show me heart universe),2013,movie,Comedy,0.0,0.0,0.0,1.0,neutral,False,4,,,,,,,Pacific Heights
+Serial,1980,movie,Comedy,-0.7579,0.0,0.12,0.88,negative,False,3,6.5,1185.0,,60.0,9870727.0,,Financial District/South Beach
+Live Nude Girls Unite!,2000,movie,Documentary,0.5577,0.112,0.082,0.807,positive,False,7,6.4,517.0,,82.0,84706.0,2 wins,North Beach
+Faces of Death,1978,movie,"Documentary, Horror",-0.9583,0.017,0.142,0.841,negative,False,1,4.2,8345.0,,25.0,,,
+Barbary Coast,1935,movie,"Adventure, Drama, Romance",-0.5574,0.06,0.111,0.829,negative,False,2,6.8,2030.0,,92.0,,Nominated for 1 Oscar. 1 nomination total,
+Patty Hearst,1988,movie,"Biography, Drama",-0.0772,0.115,0.119,0.766,negative,False,7,6.3,2578.0,62.0,60.0,1223326.0,2 nominations,Outer Richmond
+Shattered,1991,movie,"Crime, Drama, Mystery",0.2263,0.093,0.071,0.836,positive,False,0,6.5,12247.0,,40.0,11511031.0,1 nomination total,
+Common Threads: Stories from the Quilt,1989,movie,"Documentary, Biography, History",-0.8625,0.0,0.167,0.833,negative,True,6,8.1,1124.0,,100.0,,Won 1 Oscar. 4 wins total,Castro/Upper Market
+Panther,1995,movie,Drama,0.4019,0.066,0.0,0.934,positive,False,4,6.4,2717.0,,27.0,6834525.0,2 wins & 2 nominations,
+All About Eve,1950,movie,Drama,0.4118,0.139,0.097,0.765,positive,True,1,8.2,147735.0,98.0,99.0,63463.0,Won 6 Oscars. 27 wins & 22 nominations total,Tenderloin
+Serendipity,2001,movie,"Comedy, Romance",0.9866,0.21,0.058,0.732,positive,False,7,6.8,125420.0,52.0,58.0,50294317.0,3 nominations total,
+Sister Act,1992,movie,"Comedy, Family, Music",0.7073,0.103,0.093,0.804,positive,False,2,6.5,116127.0,51.0,73.0,139605150.0,9 wins & 10 nominations total,Noe Valley
+Shadow of the Thin Man,1941,movie,"Drama, Mystery",-0.882,0.143,0.197,0.66,negative,False,6,7.2,7072.0,63.0,88.0,,,Treasure Island
+Fathers' Day,1997,movie,"Comedy, Romance",-0.3612,0.029,0.039,0.932,negative,False,1,5.3,16933.0,43.0,26.0,28598376.0,1 nomination total,
+The Sweetest Thing,2002,movie,"Comedy, Romance",-0.1531,0.094,0.105,0.801,negative,False,7,5.2,64477.0,32.0,25.0,24718164.0,1 win & 4 nominations total,
+The Doors,1991,movie,"Biography, Drama, Music",-0.0226,0.059,0.069,0.871,neutral,False,1,7.2,105333.0,62.0,57.0,34416893.0,3 nominations total,
+Swingin' Along,1961,movie,Comedy,0.7964,0.244,0.0,0.756,positive,False,1,4.7,78.0,,,,,Chinatown
+Star Trek II: The Wrath of Khan,1982,movie,"Action, Adventure, Sci-Fi",-0.1505,0.078,0.058,0.863,negative,False,5,7.7,134088.0,68.0,87.0,79707906.0,5 wins & 9 nominations total,Golden Gate Park
+"Yours, Mine and Ours",1968,movie,"Comedy, Family",0.7313,0.114,0.044,0.841,positive,False,1,7.1,10983.0,,57.0,,2 wins & 4 nominations total,
+Nora Prentiss,1947,movie,"Drama, Film-Noir",-0.7357,0.0,0.105,0.895,negative,False,3,7.1,2146.0,,,,,Nob Hill

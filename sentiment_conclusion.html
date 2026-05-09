@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sentiment Conclusion</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0a0a;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+    color: #f0ece4;
+    padding: 1.5rem 2rem 2rem;
+    min-height: 100vh;
+  }
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #555550; margin-bottom: 0.5rem;
+  }
+  h2 { font-size: 20px; font-weight: 500; color: #f0ece4; margin-bottom: 0.35rem; }
+  .subtitle { font-size: 14px; color: #aaa89f; margin-bottom: 1.5rem; line-height: 1.6; }
+
+  /* ── Next button ── */
+  #next-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #1a1a1a; border: 1px solid #2a2a2a;
+    color: #9a9a94; font-size: 13px;
+    padding: 0.6rem 1.2rem; border-radius: 8px;
+    cursor: pointer; margin-bottom: 2rem;
+    transition: border-color 0.2s, color 0.2s;
+    font-family: inherit;
+  }
+  #next-btn:hover { border-color: #444; color: #f0ece4; }
+  #next-btn.hidden { display: none; }
+
+  /* ── Progress dots ── */
+  .progress {
+    display: flex; gap: 6px; margin-bottom: 1.5rem;
+  }
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #222; transition: background 0.3s;
+  }
+  .dot.active { background: #555550; }
+  .dot.done   { background: #2a2a2a; }
+
+  /* ── Sections ── */
+  .step-section {
+    display: none;
+    margin-bottom: 1.5rem;
+    pointer-events: none;
+  }
+  .step-section.visible {
+    opacity: 1; transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* ── Legend ── */
+  .fp-legend { display: flex; gap: 16px; margin-bottom: 1.25rem; flex-wrap: wrap; }
+  .fp-legend-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #777770; }
+  .fp-legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+
+  .fp-axis { display: grid; grid-template-columns: 160px 1fr 52px; gap: 12px; margin-bottom: 6px; }
+  .fp-axis-labels { display: flex; justify-content: space-between; font-size: 10px; color: #333330; }
+
+  .fp-row {
+    display: grid; grid-template-columns: 160px 1fr 52px;
+    align-items: center; gap: 12px; margin-bottom: 10px;
+  }
+  .fp-label { font-size: 12px; color: #9a9a94; text-align: right; line-height: 1.3; }
+  .fp-label strong { display: block; font-size: 13px; color: #d0cdc6; font-weight: 500; }
+  .fp-bar-track {
+    height: 26px; border-radius: 3px; overflow: hidden;
+    display: flex; background: #141414;
+  }
+  .fp-seg {
+    height: 100%; display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.8);
+    min-width: 0; overflow: hidden; white-space: nowrap;
+    width: 0%;
+  }
+  .fp-seg.neg { background: #c0543a; }
+  .fp-seg.neu { background: #4a4a47; }
+  .fp-seg.pos { background: #1a8a65; }
+  .fp-n { font-size: 11px; color: #444440; white-space: nowrap; }
+  .fp-divider-el { height: 1px; background: #1a1a1a; margin: 6px 0 12px; }
+
+  /* ── Tension ── */
+  .tension-block {
+    background: #0f0f0f; border-left: 3px solid #2a2a2a;
+    border-radius: 0 8px 8px 0; padding: 1rem 1.25rem;
+  }
+  .tension-block p { font-size: 13px; color: #777770; line-height: 1.7; }
+  .tension-block strong { color: #aaa89f; }
+
+  /* ── Cards ── */
+  .cards-label {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #555550; margin-bottom: 1rem;
+  }
+  .cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .q-card {
+    background: #111; border: 1px solid #1e1e1e;
+    border-radius: 12px; padding: 1.1rem 1.2rem;
+  }
+  .q-card:hover { border-color: #2a2a28; background: #141414; }
+  .q-card-tag {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 0.5rem;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .q-card-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .q-card-question { font-size: 13px; color: #aaa89f; line-height: 1.55; font-style: italic; }
+
+  /* ── Bridge ── */
+  .bridge-block { text-align: center; padding: 1.5rem 0 1rem; }
+  .bridge-icon  { font-size: 28px; margin-bottom: 0.75rem; }
+  .bridge-text  { font-size: 15px; color: #d0cdc6; font-weight: 500; margin-bottom: 0.4rem; }
+  .bridge-sub   { font-size: 13px; color: #555550; line-height: 1.6; }
+  .bridge-arrow {
+    margin-top: 1rem; font-size: 18px; color: #333330;
+    animation: bob 1.8s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(5px); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <p class="section-label">Sentiment Analysis — All Together</p>
+  <h2>How does tone shift across each cut?</h2>
+  <p class="subtitle">
+    Oscar winners, box office hits, critically acclaimed films —
+    each group has a different emotional profile. Here they are side by side.
+  </p>
+
+  <!-- Progress dots -->
+  <div class="progress" id="progress"></div>
+
+  <!-- Next button -->
+  <button id="next-btn">Continue ↓</button>  
+
+  <!-- Step 1: Fingerprint chart -->
+  <div class="step-section" id="step-1">
+    <div class="fp-legend">
+      <span class="fp-legend-item"><span class="fp-legend-dot" style="background:#c0543a;"></span>Negative plots</span>
+      <span class="fp-legend-item"><span class="fp-legend-dot" style="background:#4a4a47;"></span>Neutral</span>
+      <span class="fp-legend-item"><span class="fp-legend-dot" style="background:#1a8a65;"></span>Positive plots</span>
+    </div>
+    <div class="fp-axis">
+      <div></div>
+      <div class="fp-axis-labels">
+        <span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span>
+      </div>
+      <div></div>
+    </div>
+    <div id="fp-rows"></div>
+  </div>
+
+  <!-- Step 2: Tension -->
+  <div class="step-section" id="step-2">
+    <div class="tension-block">
+      <p>
+        Tone shifts across groups, but <strong>never dramatically</strong>.
+        Crime films score darkest, Musicals brightest —
+        yet both have acclaimed, commercially successful titles in this dataset.
+        <strong>Sentiment alone does not explain what makes a San Francisco film resonate.</strong>
+        Something else is going on — and it might be written in the city itself.
+      </p>
+    </div>
+  </div>
+
+  <!-- Step 3: Question cards -->
+  <div class="step-section" id="step-3">
+    <p class="cards-label">Questions worth exploring</p>
+    <div class="cards-grid" id="cards-grid"></div>
+  </div>
+
+  <!-- Step 4: Bridge -->
+  <div class="step-section" id="step-4">
+    <div class="bridge-block">
+      <div class="bridge-icon">🗺️</div>
+      <div class="bridge-text">One layer at a time was not enough.</div>
+      <div class="bridge-sub">
+        Explore filming locations, genres, ratings and sentiment<br>
+        all together on the interactive map below.
+      </div>
+      <div class="bridge-arrow">↓</div>
+    </div>
+  </div>
+
+</div>
+<script>
+const allBars    = [{"x": -1.0, "y": 19, "zone": "neg"}, {"x": -0.9, "y": 31, "zone": "neg"}, {"x": -0.8, "y": 17, "zone": "neg"}, {"x": -0.7, "y": 19, "zone": "neg"}, {"x": -0.6, "y": 18, "zone": "neg"}, {"x": -0.5, "y": 7, "zone": "neg"}, {"x": -0.4, "y": 6, "zone": "neg"}, {"x": -0.3, "y": 7, "zone": "neg"}, {"x": -0.2, "y": 11, "zone": "neg"}, {"x": -0.1, "y": 7, "zone": "neg"}, {"x": 0.0, "y": 16, "zone": "neu"}, {"x": 0.1, "y": 6, "zone": "pos"}, {"x": 0.2, "y": 4, "zone": "pos"}, {"x": 0.3, "y": 7, "zone": "pos"}, {"x": 0.4, "y": 11, "zone": "pos"}, {"x": 0.5, "y": 5, "zone": "pos"}, {"x": 0.6, "y": 11, "zone": "pos"}, {"x": 0.7, "y": 14, "zone": "pos"}, {"x": 0.8, "y": 21, "zone": "pos"}, {"x": 0.9, "y": 36, "zone": "pos"}, {"x": 1.0, "y": 18, "zone": "pos"}];
+const oscarYes   = [{"x": -1.0, "y": 2}, {"x": -0.9, "y": 3}, {"x": -0.8, "y": 1}, {"x": -0.7, "y": 0}, {"x": -0.6, "y": 1}, {"x": -0.5, "y": 0}, {"x": -0.4, "y": 0}, {"x": -0.3, "y": 0}, {"x": -0.2, "y": 1}, {"x": -0.1, "y": 1}, {"x": 0.0, "y": 0}, {"x": 0.1, "y": 2}, {"x": 0.2, "y": 0}, {"x": 0.3, "y": 0}, {"x": 0.4, "y": 1}, {"x": 0.5, "y": 0}, {"x": 0.6, "y": 0}, {"x": 0.7, "y": 3}, {"x": 0.8, "y": 3}, {"x": 0.9, "y": 3}, {"x": 1.0, "y": 3}];
+const oscarNo    = [{"x": -1.0, "y": 17}, {"x": -0.9, "y": 28}, {"x": -0.8, "y": 16}, {"x": -0.7, "y": 19}, {"x": -0.6, "y": 17}, {"x": -0.5, "y": 7}, {"x": -0.4, "y": 6}, {"x": -0.3, "y": 7}, {"x": -0.2, "y": 10}, {"x": -0.1, "y": 6}, {"x": 0.0, "y": 16}, {"x": 0.1, "y": 4}, {"x": 0.2, "y": 4}, {"x": 0.3, "y": 7}, {"x": 0.4, "y": 10}, {"x": 0.5, "y": 5}, {"x": 0.6, "y": 11}, {"x": 0.7, "y": 11}, {"x": 0.8, "y": 18}, {"x": 0.9, "y": 33}, {"x": 1.0, "y": 15}];
+const boTop      = [{"x": -1.0, "y": 1}, {"x": -0.9, "y": 4}, {"x": -0.8, "y": 5}, {"x": -0.7, "y": 2}, {"x": -0.6, "y": 5}, {"x": -0.5, "y": 1}, {"x": -0.4, "y": 1}, {"x": -0.3, "y": 3}, {"x": -0.2, "y": 1}, {"x": -0.1, "y": 2}, {"x": 0.0, "y": 2}, {"x": 0.1, "y": 1}, {"x": 0.2, "y": 0}, {"x": 0.3, "y": 2}, {"x": 0.4, "y": 3}, {"x": 0.5, "y": 1}, {"x": 0.6, "y": 0}, {"x": 0.7, "y": 2}, {"x": 0.8, "y": 3}, {"x": 0.9, "y": 8}, {"x": 1.0, "y": 4}];
+const boBot      = [{"x": -1.0, "y": 14}, {"x": -0.9, "y": 16}, {"x": -0.8, "y": 9}, {"x": -0.7, "y": 10}, {"x": -0.6, "y": 8}, {"x": -0.5, "y": 4}, {"x": -0.4, "y": 5}, {"x": -0.3, "y": 4}, {"x": -0.2, "y": 6}, {"x": -0.1, "y": 3}, {"x": 0.0, "y": 12}, {"x": 0.1, "y": 4}, {"x": 0.2, "y": 1}, {"x": 0.3, "y": 1}, {"x": 0.4, "y": 5}, {"x": 0.5, "y": 2}, {"x": 0.6, "y": 7}, {"x": 0.7, "y": 7}, {"x": 0.8, "y": 8}, {"x": 0.9, "y": 13}, {"x": 1.0, "y": 12}];
+const imdbHigh   = [{"x": -1.0, "y": 4}, {"x": -0.9, "y": 6}, {"x": -0.8, "y": 4}, {"x": -0.7, "y": 2}, {"x": -0.6, "y": 1}, {"x": -0.5, "y": 0}, {"x": -0.4, "y": 1}, {"x": -0.3, "y": 1}, {"x": -0.2, "y": 3}, {"x": -0.1, "y": 2}, {"x": 0.0, "y": 1}, {"x": 0.1, "y": 1}, {"x": 0.2, "y": 2}, {"x": 0.3, "y": 3}, {"x": 0.4, "y": 1}, {"x": 0.5, "y": 1}, {"x": 0.6, "y": 0}, {"x": 0.7, "y": 2}, {"x": 0.8, "y": 1}, {"x": 0.9, "y": 4}, {"x": 1.0, "y": 2}];
+const imdbLow    = [{"x": -1.0, "y": 15}, {"x": -0.9, "y": 25}, {"x": -0.8, "y": 13}, {"x": -0.7, "y": 17}, {"x": -0.6, "y": 17}, {"x": -0.5, "y": 7}, {"x": -0.4, "y": 5}, {"x": -0.3, "y": 6}, {"x": -0.2, "y": 7}, {"x": -0.1, "y": 5}, {"x": 0.0, "y": 14}, {"x": 0.1, "y": 5}, {"x": 0.2, "y": 2}, {"x": 0.3, "y": 3}, {"x": 0.4, "y": 10}, {"x": 0.5, "y": 4}, {"x": 0.6, "y": 10}, {"x": 0.7, "y": 12}, {"x": 0.8, "y": 20}, {"x": 0.9, "y": 31}, {"x": 1.0, "y": 16}];
+const nOscar     = 24;
+const nNonOscar  = 267;
+const nBoTop     = 51;
+const nBoBot     = 151;
+const nImdbHigh  = 42;
+const nImdbLow   = 244;
+const totalFilms = 291;
+
+let currentStep = 0;
+const TOTAL_STEPS = 4;
+
+function calcPcts(barsArr) {
+  const t = barsArr.reduce((a,b) => a+b.y, 0);
+  if (t === 0) return { neg:0, neu:0, pos:0 };
+  let neg=0, neu=0, pos=0;
+  barsArr.forEach(b => {
+    if      (b.x < -0.05)  neg += b.y;
+    else if (b.x <=  0.05) neu += b.y;
+    else                   pos += b.y;
+  });
+  return {
+    neg: Math.round(neg/t*100),
+    neu: Math.round(neu/t*100),
+    pos: Math.round(pos/t*100),
+  };
+}
+
+const groups = [
+  { label:'All SF films',       sub: totalFilms+' films', bars:allBars,  accent:'#f0ece4', divider:true  },
+  { label:'Non-Oscar winners',  sub: nNonOscar+' films',  bars:oscarNo,  accent:'#9a9a94', divider:false },
+  { label:'Oscar winners',      sub: nOscar+' films',     bars:oscarYes, accent:'#FFD700', divider:true  },
+  { label:'Bottom 75% BO',      sub: nBoBot+' films',     bars:boBot,    accent:'#9a9a94', divider:false },
+  { label:'Top 25% box office', sub: nBoTop+' films',     bars:boTop,    accent:'#43A047', divider:true  },
+  { label:'IMDb below 7.5',     sub: nImdbLow+' films',   bars:imdbLow,  accent:'#9a9a94', divider:false },
+  { label:'IMDb 7.5+',          sub: nImdbHigh+' films',  bars:imdbHigh, accent:'#E91E63', divider:false },
+];
+
+const qCards = [
+  { tag:'Crime · Dark tone',    color:'#c0543a',
+    question:'SF's darkest genre — does it concentrate in specific neighborhoods?' },
+  { tag:'Oscar winners',        color:'#FFD700',
+    question:'Only ' + nOscar + ' films won Oscars. Where were they filmed?' },
+  { tag:'Top 25% box office',   color:'#43A047',
+    question:'Top earners don't always have uplifting plots. What do they share?' },
+  { tag:'IMDb 7.5+',            color:'#E91E63',
+    question:'Acclaimed films spread across all tones. Does location play a role?' },
+];
+
+function buildRows() {
+  const wrap = document.getElementById('fp-rows');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  groups.forEach(g => {
+    const p   = calcPcts(g.bars);
+    const row = document.createElement('div');
+    row.className = 'fp-row';
+    row.innerHTML =
+      '<div class="fp-label" style="color:' + g.accent + '">' +
+        '<strong>' + g.label + '</strong>' + g.sub + '</div>' +
+      '<div class="fp-bar-track">' +
+        '<div class="fp-seg neg" data-target="' + p.neg + '" style="width:0%">' +
+          (p.neg >= 12 ? p.neg+'%' : '') + '</div>' +
+        '<div class="fp-seg neu" data-target="' + p.neu + '" style="width:0%">' +
+          (p.neu >= 8  ? p.neu+'%' : '') + '</div>' +
+        '<div class="fp-seg pos" data-target="' + p.pos + '" style="width:0%">' +
+          (p.pos >= 12 ? p.pos+'%' : '') + '</div>' +
+      '</div>' +
+      '<div class="fp-n">n=' + g.bars.reduce((a,b)=>a+b.y,0) + '</div>';
+    wrap.appendChild(row);
+    if (g.divider) {
+      const d = document.createElement('div');
+      d.className = 'fp-divider-el';
+      wrap.appendChild(d);
+    }
+  });
+}
+
+function animateBars() {
+  document.querySelectorAll('.fp-row').forEach((row, ri) => {
+    setTimeout(() => {
+      const segs    = row.querySelectorAll('.fp-seg');
+      const targets = Array.from(segs).map(s => parseFloat(s.dataset.target) || 0);
+      const dur = 800, t0 = performance.now();
+      function step(now) {
+        const t = Math.min((now - t0) / dur, 1);
+        const e = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+        segs.forEach((seg, i) => { seg.style.width = (targets[i] * e) + '%'; });
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }, ri * 100);
+  });
+}
+
+function buildCards() {
+  const grid = document.getElementById('cards-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  qCards.forEach(c => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.innerHTML =
+      '<div class="q-card-tag" style="color:' + c.color + '">' +
+        '<span class="q-card-dot" style="background:' + c.color + '"></span>' + c.tag + '</div>' +
+      '<div class="q-card-question">' + c.question + '</div>';
+    grid.appendChild(card);
+  });
+}
+
+function updateProgress() {
+  for (let i = 0; i < TOTAL_STEPS; i++) {
+    const dot = document.getElementById('dot-' + i);
+    if (!dot) continue;
+    if (i < currentStep)        dot.className = 'dot done';
+    else if (i === currentStep) dot.className = 'dot active';
+    else                        dot.className = 'dot';
+  }
+}
+
+function showStep(n) {
+  const el = document.getElementById('step-' + n);
+  if (!el) { console.log('step not found: ' + n); return; }
+  // force display first, then opacity
+  el.style.display   = 'block';
+  el.style.opacity   = '0';
+  el.style.transform = 'translateY(16px)';
+  // force reflow
+  void el.offsetHeight;
+  // now animate
+  el.style.transition  = 'opacity 0.5s ease, transform 0.5s ease';
+  el.style.opacity     = '1';
+  el.style.transform   = 'translateY(0)';
+  el.style.pointerEvents = 'auto';
+
+  if (n === 1) setTimeout(animateBars, 400);
+
+  setTimeout(() => {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+function nextStep() {
+  currentStep++;
+  updateProgress();
+  showStep(currentStep);
+  if (currentStep >= TOTAL_STEPS) {
+    const btn = document.getElementById('next-btn');
+    if (btn) btn.style.display = 'none';
+  }
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+buildRows();
+buildCards();
+
+// Build progress dots
+const progressWrap = document.getElementById('progress');
+if (progressWrap) {
+  for (let i = 0; i < TOTAL_STEPS; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'dot';
+    dot.id = 'dot-' + i;
+    progressWrap.appendChild(dot);
+  }
+}
+
+// Attach button
+const btn = document.getElementById('next-btn');
+if (btn) btn.addEventListener('click', nextStep);
+
+// Show step 1 immediately
+updateProgress();
+setTimeout(nextStep, 300);
+</script>
+</body>
+</html>

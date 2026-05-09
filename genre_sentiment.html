@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genre Sentiment</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0a0a;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+    color: #f0ece4;
+    padding: 2rem 1.5rem 3rem;
+    overflow-x: hidden;
+    min-height: 500vh;
+  }
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #555550; margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-size: 20px; font-weight: 500; color: #f0ece4; margin-bottom: 0.4rem;
+  }
+  .section-sub {
+    font-size: 13px; color: #777770; margin-bottom: 2rem; line-height: 1.6;
+  }
+
+  /* ── Scale ── */
+  .scale-wrap { margin-bottom: 2.5rem; }
+  .scale-track {
+    position: relative; height: 10px; border-radius: 5px;
+    background: linear-gradient(to right, #c0543a 0%, #4a4a47 50%, #1a8a65 100%);
+    margin-bottom: 0.5rem;
+  }
+  .scale-labels {
+    display: flex; justify-content: space-between;
+    font-size: 11px; color: #555550;
+  }
+  .scale-zones {
+    display: flex; justify-content: space-between;
+    font-size: 11px; color: #444440; margin-top: 0.3rem;
+  }
+  .scale-dot {
+    position: absolute; top: 50%; transform: translate(-50%, -50%);
+    width: 18px; height: 18px; border-radius: 50%;
+    border: 2px solid #0a0a0a;
+    opacity: 0; transition: opacity 0.5s ease;
+  }
+  .scale-dot.visible { opacity: 1; }
+  .scale-dot-label {
+    position: absolute; top: 18px; transform: translateX(-50%);
+    font-size: 10px; white-space: nowrap; font-weight: 500;
+  }
+
+  /* ── Poster cards ── */
+  .posters-wrap {
+    display: flex; gap: 1.5rem; justify-content: center;
+    align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;
+  }
+  .poster-card {
+    display: flex; flex-direction: column; align-items: center;
+    width: 160px;
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .poster-card.center { width: 130px; }
+  .poster-card.visible { opacity: 1; transform: translateY(0); }
+
+  .poster-img {
+    width: 100%; border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+    aspect-ratio: 2/3; object-fit: cover;
+    background: #1a1a1a; display: block;
+  }
+  .poster-title {
+    font-size: 12px; color: #d0cdc6; font-weight: 500;
+    margin-top: 0.6rem; text-align: center;
+  }
+  .poster-genre {
+    font-size: 10px; color: #555550;
+    margin-top: 0.2rem; text-align: center;
+  }
+  .poster-score {
+    font-size: 18px; font-weight: 600;
+    margin-top: 0.4rem; text-align: center;
+    opacity: 0; transition: opacity 0.5s ease;
+  }
+  .poster-score.visible { opacity: 1; }
+  .poster-tone {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.04em;
+    margin-top: 0.2rem; text-align: center;
+  }
+
+  /* ── Question block ── */
+  .question-block {
+    background: #111; border: 1px solid #222;
+    border-radius: 12px; padding: 1.25rem 1.5rem;
+    text-align: center; margin-bottom: 2rem;
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .question-block.visible { opacity: 1; transform: translateY(0); }
+  .question-text {
+    font-size: 15px; color: #aaa89f; font-style: italic; margin-bottom: 0.5rem;
+  }
+  .scroll-hint {
+    font-size: 11px; color: #444440;
+    animation: bob 1.6s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(4px); }
+  }
+
+  /* ── Reveal block ── */
+  .reveal-block {
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    margin-bottom: 2.5rem;
+  }
+  .reveal-block.visible { opacity: 1; transform: translateY(0); }
+  .reveal-text {
+    font-size: 13px; color: #777770; line-height: 1.65;
+    text-align: center; margin-bottom: 1.5rem;
+  }
+  .reveal-text strong { color: #aaa89f; }
+
+  /* ── Divider ── */
+  .divider {
+    height: 1px; background: #1a1a1a; margin: 2.5rem 0;
+    opacity: 0; transition: opacity 0.6s ease;
+  }
+  .divider.visible { opacity: 1; }
+
+  /* ── Transition block ── */
+  .transition-block {
+    text-align: center; padding: 1rem 0 2rem;
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .transition-block.visible { opacity: 1; transform: translateY(0); }
+  .transition-block p { font-size: 14px; color: #777770; line-height: 1.65; }
+  .transition-block strong { color: #aaa89f; }
+
+  /* ── Genre chart ── */
+  .genre-section { margin-top: 1rem; }
+  .genre-title { font-size: 18px; font-weight: 500; color: #f0ece4; margin-bottom: 0.3rem; }
+  .genre-sub   { font-size: 13px; color: #777770; margin-bottom: 1.5rem; }
+
+  .genre-axis {
+    display: grid; grid-template-columns: 130px 1fr 44px;
+    gap: 10px; margin-bottom: 8px;
+  }
+  .genre-axis-labels {
+    display: flex; justify-content: space-between;
+    font-size: 10px; color: #333330;
+  }
+
+  .genre-row {
+    display: grid; grid-template-columns: 130px 1fr 44px;
+    align-items: center; gap: 10px; margin-bottom: 6px;
+    opacity: 0; transform: translateX(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .genre-row.visible { opacity: 1; transform: translateX(0); }
+
+  .genre-name { font-size: 12px; color: #9a9a94; text-align: right; }
+  .genre-bar-wrap {
+    position: relative; height: 20px; display: flex; align-items: center;
+  }
+  .genre-zero {
+    position: absolute; left: 50%; top: 0;
+    width: 1px; height: 100%; background: #2a2a2a; z-index: 1;
+  }
+  .genre-bar {
+    position: absolute; height: 16px; border-radius: 2px; width: 0%;
+    transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .genre-bar.neg { background: #c0543a; right: 50%; }
+  .genre-bar.pos { background: #1a8a65; left: 50%; }
+  .genre-count { font-size: 10px; color: #444440; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <p class="section-label">Plot Sentiment — What does it mean?</p>
+  <h2 class="section-title">Not a rating. A tone.</h2>
+  <p class="section-sub">
+    Each film's plot is read by an AI that scores its emotional tone —
+    from very dark (−1) to very uplifting (+1).<br>
+    Here are two real examples from San Francisco films.
+  </p>
+
+  <!-- Scale -->
+  <div class="scale-wrap" id="scale-wrap">
+    <div class="scale-track" id="scale-track">
+      <div class="scale-dot" id="dot-zodiac"
+           style="background:#c0543a; left:1.44%">
+        <div class="scale-dot-label" style="color:#c0543a;">Zodiac</div>
+      </div>
+      <div class="scale-dot" id="dot-dolittle"
+           style="background:#1a8a65; left:99.52%">
+        <div class="scale-dot-label" style="color:#1a8a65;">Dr. Dolittle 2</div>
+      </div>
+      <div class="scale-dot" id="dot-babies"
+           style="background:#aaa89f; left:50%;">
+        <div class="scale-dot-label" style="color:#aaa89f;">Babies</div>
+      </div>
+    </div>
+    <div class="scale-labels">
+      <span>−1.0</span><span>−0.5</span><span>0</span><span>+0.5</span><span>+1.0</span>
+    </div>
+    <div class="scale-zones">
+      <span>Dark tone</span>
+      <span style="flex:1; text-align:center;">Neutral</span>
+      <span>Uplifting</span>
+    </div>
+  </div>
+
+  <!-- Step 1: Zodiac -->
+  <div class="posters-wrap">
+    <div class="poster-card" id="card-zodiac">
+      <img class="poster-img" id="img-zodiac" src="" alt="Zodiac">
+      <div class="poster-title">Zodiac</div>
+      <div class="poster-genre" id="genre-zodiac"></div>
+      <div class="poster-score" id="score-zodiac" style="color:#c0543a;"></div>
+      <div class="poster-tone" style="color:#c0543a;">Dark tone</div>
+    </div>
+  </div>
+
+  <!-- Step 2: Dr Dolittle -->
+  <div class="posters-wrap">
+    <div class="poster-card" id="card-dolittle">
+      <img class="poster-img" id="img-dolittle" src="" alt="Dr. Dolittle 2">
+      <div class="poster-title">Dr. Dolittle 2</div>
+      <div class="poster-genre" id="genre-dolittle"></div>
+      <div class="poster-score" id="score-dolittle" style="color:#1a8a65;"></div>
+      <div class="poster-tone" style="color:#1a8a65;">Uplifting tone</div>
+    </div>
+  </div>
+
+  <!-- Step 3: Question + Babies -->
+  <div class="question-block" id="question-block">
+    <div class="question-text">"Where would you place this film on the scale?"</div>
+    <div class="scroll-hint">↓ scroll to reveal</div>
+  </div>
+
+  <div class="posters-wrap">
+    <div class="poster-card center" id="card-babies">
+      <img class="poster-img" id="img-babies" src="" alt="Babies">
+      <div class="poster-title">Babies (2010)</div>
+      <div class="poster-genre" id="genre-babies"></div>
+    </div>
+  </div>
+
+  <!-- Step 4: Reveal -->
+  <div class="reveal-block" id="reveal-block">
+    <div style="font-size:22px; font-weight:600; color:#aaa89f;
+                text-align:center; margin-bottom:0.5rem;">0.0000</div>
+    <div style="font-size:11px; font-weight:500; color:#aaa89f;
+                text-align:center; margin-bottom:1rem; letter-spacing:0.04em;">
+      Neutral — purely observational
+    </div>
+    <div class="reveal-text">
+      No heroes, no villains, no dramatic arc.<br>
+      <strong>The AI reads the words in the plot and scores the emotional tone.</strong><br>
+      It is not a quality judgment — Zodiac is a critically acclaimed film.
+    </div>
+  </div>
+
+  <div class="divider" id="divider1"></div>
+
+  <!-- Transition -->
+  <div class="transition-block" id="transition-block">
+    <p>Every genre carries its own emotional fingerprint.<br>
+    <strong>Here's how SF films break down across genres.</strong></p>
+  </div>
+
+  <!-- Genre chart -->
+  <div class="genre-section">
+    <h2 class="genre-title">Plot Sentiment by Genre</h2>
+    <p class="genre-sub">Mean compound sentiment score — genres with at least 5 SF films</p>
+    <div class="genre-axis">
+      <div></div>
+      <div class="genre-axis-labels">
+        <span>−0.6</span><span>−0.3</span><span>0</span><span>+0.3</span><span>+0.6</span>
+      </div>
+      <div></div>
+    </div>
+    <div id="genre-rows"></div>
+  </div>
+
+</div>
+<script>
+const zodiacData   = {"title": "Zodiac", "poster": "https://m.media-amazon.com/images/M/MV5BNDFkMTRkZmQtM2I0NC00NjJjLWJlMDctNTNiZWYxYzhjZDZiXkEyXkFqcGc@._V1_SX300.jpg", "compound": -0.9712, "genres": "Crime, Drama, Mystery"};
+const dolittleData = {"title": "Dr. Dolittle 2", "poster": "https://m.media-amazon.com/images/M/MV5BM2ZkZDk2NDAtYzdmNy00Yjk4LWJjODctMjMyMjNmZWFjNzMwXkEyXkFqcGc@._V1_SX300.jpg", "compound": 0.9904, "genres": "Comedy, Family, Fantasy"};
+const babiesData   = {"title": "Babies", "poster": "https://m.media-amazon.com/images/M/MV5BMTI3MjA4OTE1MF5BMl5BanBnXkFtZTcwNDk3NjYwMw@@._V1_SX300.jpg", "compound": 0.0, "genres": "Documentary"};
+const genreData    = [{"genre": "Mystery", "mean": -0.6489, "count": 29}, {"genre": "Horror", "mean": -0.5678, "count": 10}, {"genre": "Crime", "mean": -0.5552, "count": 59}, {"genre": "Film-Noir", "mean": -0.5112, "count": 10}, {"genre": "Thriller", "mean": -0.4157, "count": 35}, {"genre": "Action", "mean": -0.3526, "count": 47}, {"genre": "History", "mean": -0.2683, "count": 5}, {"genre": "Documentary", "mean": -0.0719, "count": 11}, {"genre": "Sci-Fi", "mean": -0.0606, "count": 27}, {"genre": "Adventure", "mean": -0.0531, "count": 32}, {"genre": "Drama", "mean": -0.0091, "count": 168}, {"genre": "Fantasy", "mean": -0.0078, "count": 17}, {"genre": "Biography", "mean": 0.0838, "count": 23}, {"genre": "Comedy", "mean": 0.1719, "count": 114}, {"genre": "Family", "mean": 0.301, "count": 18}, {"genre": "Romance", "mean": 0.3081, "count": 71}, {"genre": "Music", "mean": 0.6208, "count": 10}, {"genre": "Musical", "mean": 0.6462, "count": 7}];
+
+document.getElementById('img-zodiac').src            = zodiacData.poster;
+document.getElementById('img-dolittle').src          = dolittleData.poster;
+document.getElementById('img-babies').src            = babiesData.poster;
+document.getElementById('genre-zodiac').textContent  = zodiacData.genres;
+document.getElementById('genre-dolittle').textContent= dolittleData.genres;
+document.getElementById('genre-babies').textContent  = babiesData.genres;
+document.getElementById('score-zodiac').textContent  = zodiacData.compound.toFixed(4);
+document.getElementById('score-dolittle').textContent= dolittleData.compound.toFixed(4);
+
+const maxAbs = Math.max(...genreData.map(g => Math.abs(g.mean)));
+
+function buildGenreRows() {
+  const wrap = document.getElementById('genre-rows');
+  genreData.forEach((g, i) => {
+    const isNeg = g.mean < 0;
+    const pct   = (Math.abs(g.mean) / maxAbs * 50).toFixed(2);
+    const row   = document.createElement('div');
+    row.className   = 'genre-row';
+    row.dataset.idx = i;
+    row.innerHTML =
+      '<div class="genre-name">' + g.genre + '</div>' +
+      '<div class="genre-bar-wrap">' +
+        '<div class="genre-zero"></div>' +
+        '<div class="genre-bar ' + (isNeg ? 'neg' : 'pos') + '" ' +
+             'data-target="' + pct + '%" style="width:0%"></div>' +
+      '</div>' +
+      '<div class="genre-count">n=' + g.count + '</div>';
+    wrap.appendChild(row);
+  });
+}
+
+function observeGenreRows() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const row = entry.target;
+      const i   = parseInt(row.dataset.idx);
+      setTimeout(() => {
+        row.classList.add('visible');
+        const bar = row.querySelector('.genre-bar');
+        if (bar) {
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            bar.style.width = bar.dataset.target;
+          }));
+        }
+      }, i * 55);
+      obs.unobserve(row);
+    });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.genre-row').forEach(r => obs.observe(r));
+}
+
+function reveal(el) {
+  if (el) el.classList.add('visible');
+}
+
+const triggers = [
+  { id: 'card-zodiac',      pct: 0.05 },
+  { id: 'dot-zodiac',       pct: 0.08 },
+  { id: 'score-zodiac',     pct: 0.10 },
+  { id: 'card-dolittle',    pct: 0.18 },
+  { id: 'dot-dolittle',     pct: 0.21 },
+  { id: 'score-dolittle',   pct: 0.23 },
+  { id: 'question-block',   pct: 0.35 },
+  { id: 'card-babies',      pct: 0.38 },
+  { id: 'reveal-block',     pct: 0.55 },
+  { id: 'dot-babies',       pct: 0.57 },
+  { id: 'divider1',         pct: 0.65 },
+  { id: 'transition-block', pct: 0.70 },
+];
+
+const triggered = new Set();
+
+function onScroll() {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const totalH    = document.documentElement.scrollHeight - window.innerHeight;
+  const pct       = totalH > 0 ? scrollTop / totalH : 0;
+  triggers.forEach(t => {
+    if (!triggered.has(t.id) && pct >= t.pct) {
+      triggered.add(t.id);
+      reveal(document.getElementById(t.id));
+    }
+  });
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+
+window.addEventListener('load', () => {
+  buildGenreRows();
+  observeGenreRows();
+});
+
+window.addEventListener('message', e => {
+  if (e.data === 'startGenre') {
+    triggers.forEach(t => {
+      triggered.add(t.id);
+      reveal(document.getElementById(t.id));
+    });
+  }
+});
+</script>
+</body>
+</html>

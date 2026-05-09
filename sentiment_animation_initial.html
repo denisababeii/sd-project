@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SF Movie Sentiment</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0a0a;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+    color: #f0ece4;
+    padding: 1rem 1.5rem 1rem;
+    overflow-x: hidden;
+  }
+  .container { max-width: 680px; margin: 0 auto; }
+  h2 { font-size: 18px; font-weight: 500; color: #f0ece4; margin-bottom: 4px; }
+  .subtitle { font-size: 14px; color: #aaa89f; margin-bottom: 1.25rem; }
+  .legend { display: flex; gap: 20px; margin-bottom: 1.25rem; flex-wrap: wrap; }
+  .legend-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 14px; color: #9a9a94; transition: opacity 0.6s ease;
+  }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+  #squares-stage { position: relative; width: 100%; height: 300px; }
+  canvas#squaresCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+  .chart-wrap {
+    position: relative; width: 100%; height: 300px;
+    opacity: 0; transition: opacity 0.4s ease;
+  }
+  .chart-wrap.visible { opacity: 1; }
+
+  #annotationCanvas {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; opacity: 0;
+  }
+
+  /* 3-card layout (first chart) */
+  .cards {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px; margin-top: 1.5rem;
+  }
+  /* 6-card layout (comparison charts) */
+  .cards-6 {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px; margin-top: 1.5rem;
+  }
+  .card-group-label {
+    grid-column: 1 / -1;
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0 0.15rem;
+    border-top: 1px solid #1f1f1f;
+    margin-top: 0.1rem;
+  }
+  .card-group-label.first { border-top: none; margin-top: 0; }
+
+  .card { border-radius: 10px; padding: 0.75rem 1rem; text-align: center; }
+  .card-neg { background: #1a1008; border: 1px solid #D85A30; }
+  .card-neu { background: #141414; border: 1px solid #5F5E5A; }
+  .card-pos { background: #0a1a12; border: 1px solid #1D9E75; }
+  .card-num { font-size: 24px; font-weight: 500; margin-bottom: 4px; }
+  .card-neg .card-num { color: #D85A30; }
+  .card-neu .card-num { color: #9a9a94; }
+  .card-pos .card-num { color: #1D9E75; }
+  .card-lbl { font-size: 12px; color: #9a9a94; }
+
+  .footer { font-size: 11px; color: #777770; font-style: italic; margin-top: 1.25rem; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h2 id="main-title">How do SF movie plots feel emotionally?</h2>
+  <p class="subtitle" id="main-subtitle">Loading...</p>
+
+  <div class="legend">
+    <span class="legend-item" id="leg-neg"><span class="legend-dot" style="background:#F0997B;"></span>Dark / negative tone</span>
+    <span class="legend-item" id="leg-neu"><span class="legend-dot" style="background:#B4B2A9;"></span>Neutral / balanced</span>
+    <span class="legend-item" id="leg-pos"><span class="legend-dot" style="background:#5DCAA5;"></span>Uplifting / positive tone</span>
+    <span class="legend-item" id="leg-oscar"   style="opacity:0;"><span class="legend-dot" style="background:#FFD700;"></span>Oscar winners</span>
+    <span class="legend-item" id="leg-nooscar" style="opacity:0;"><span class="legend-dot" style="background:#646464;"></span>Non-winners</span>
+    <span class="legend-item" id="leg-botop"   style="opacity:0;"><span class="legend-dot" style="background:#43A047;"></span>Top 25% box office</span>
+    <span class="legend-item" id="leg-bobot"   style="opacity:0;"><span class="legend-dot" style="background:#646464;"></span>Bottom 75% box office</span>
+    <span class="legend-item" id="leg-imdbhigh" style="opacity:0;"><span class="legend-dot" style="background:#E91E63;"></span>IMDb 7.5+</span>
+    <span class="legend-item" id="leg-imdblow"  style="opacity:0;"><span class="legend-dot" style="background:#646464;"></span>IMDb below 7.5</span>
+  </div>
+
+  <div id="squares-stage">
+    <canvas id="squaresCanvas"></canvas>
+  </div>
+
+  <div class="chart-wrap" id="chartWrap" style="display:none; position:relative;">
+    <canvas id="sentChart"></canvas>
+    <canvas id="annotationCanvas"></canvas>
+  </div>
+
+  <div class="cards" id="cards-wrap">
+    <div class="card card-neg">
+      <div class="card-num" id="neg-pct">-</div>
+      <div class="card-lbl">Dark / negative plots</div>
+    </div>
+    <div class="card card-neu">
+      <div class="card-num" id="neu-pct">-</div>
+      <div class="card-lbl">Balanced / neutral plots</div>
+    </div>
+    <div class="card card-pos">
+      <div class="card-num" id="pos-pct">-</div>
+      <div class="card-lbl">Uplifting / positive plots</div>
+    </div>
+  </div>
+
+  <p class="footer">Emotional tone rated from -1 (very dark) to +1 (very uplifting).</p>
+
+</div>
+<script>
+const bars         = [{"x": -1.0, "y": 19, "zone": "neg"}, {"x": -0.9, "y": 31, "zone": "neg"}, {"x": -0.8, "y": 17, "zone": "neg"}, {"x": -0.7, "y": 19, "zone": "neg"}, {"x": -0.6, "y": 18, "zone": "neg"}, {"x": -0.5, "y": 7, "zone": "neg"}, {"x": -0.4, "y": 6, "zone": "neg"}, {"x": -0.3, "y": 7, "zone": "neg"}, {"x": -0.2, "y": 11, "zone": "neg"}, {"x": -0.1, "y": 7, "zone": "neg"}, {"x": 0.0, "y": 16, "zone": "neu"}, {"x": 0.1, "y": 6, "zone": "pos"}, {"x": 0.2, "y": 4, "zone": "pos"}, {"x": 0.3, "y": 7, "zone": "pos"}, {"x": 0.4, "y": 11, "zone": "pos"}, {"x": 0.5, "y": 5, "zone": "pos"}, {"x": 0.6, "y": 11, "zone": "pos"}, {"x": 0.7, "y": 14, "zone": "pos"}, {"x": 0.8, "y": 21, "zone": "pos"}, {"x": 0.9, "y": 36, "zone": "pos"}, {"x": 1.0, "y": 18, "zone": "pos"}];
+const oscarNoBars  = [{"x": -1.0, "y": 17}, {"x": -0.9, "y": 28}, {"x": -0.8, "y": 16}, {"x": -0.7, "y": 19}, {"x": -0.6, "y": 17}, {"x": -0.5, "y": 7}, {"x": -0.4, "y": 6}, {"x": -0.3, "y": 7}, {"x": -0.2, "y": 10}, {"x": -0.1, "y": 6}, {"x": 0.0, "y": 16}, {"x": 0.1, "y": 4}, {"x": 0.2, "y": 4}, {"x": 0.3, "y": 7}, {"x": 0.4, "y": 10}, {"x": 0.5, "y": 5}, {"x": 0.6, "y": 11}, {"x": 0.7, "y": 11}, {"x": 0.8, "y": 18}, {"x": 0.9, "y": 33}, {"x": 1.0, "y": 15}];
+const oscarYesBars = [{"x": -1.0, "y": 2}, {"x": -0.9, "y": 3}, {"x": -0.8, "y": 1}, {"x": -0.7, "y": 0}, {"x": -0.6, "y": 1}, {"x": -0.5, "y": 0}, {"x": -0.4, "y": 0}, {"x": -0.3, "y": 0}, {"x": -0.2, "y": 1}, {"x": -0.1, "y": 1}, {"x": 0.0, "y": 0}, {"x": 0.1, "y": 2}, {"x": 0.2, "y": 0}, {"x": 0.3, "y": 0}, {"x": 0.4, "y": 1}, {"x": 0.5, "y": 0}, {"x": 0.6, "y": 0}, {"x": 0.7, "y": 3}, {"x": 0.8, "y": 3}, {"x": 0.9, "y": 3}, {"x": 1.0, "y": 3}];
+const boBotBars    = [{"x": -1.0, "y": 14}, {"x": -0.9, "y": 16}, {"x": -0.8, "y": 9}, {"x": -0.7, "y": 10}, {"x": -0.6, "y": 8}, {"x": -0.5, "y": 4}, {"x": -0.4, "y": 5}, {"x": -0.3, "y": 4}, {"x": -0.2, "y": 6}, {"x": -0.1, "y": 3}, {"x": 0.0, "y": 12}, {"x": 0.1, "y": 4}, {"x": 0.2, "y": 1}, {"x": 0.3, "y": 1}, {"x": 0.4, "y": 5}, {"x": 0.5, "y": 2}, {"x": 0.6, "y": 7}, {"x": 0.7, "y": 7}, {"x": 0.8, "y": 8}, {"x": 0.9, "y": 13}, {"x": 1.0, "y": 12}];
+const boTopBars    = [{"x": -1.0, "y": 1}, {"x": -0.9, "y": 4}, {"x": -0.8, "y": 5}, {"x": -0.7, "y": 2}, {"x": -0.6, "y": 5}, {"x": -0.5, "y": 1}, {"x": -0.4, "y": 1}, {"x": -0.3, "y": 3}, {"x": -0.2, "y": 1}, {"x": -0.1, "y": 2}, {"x": 0.0, "y": 2}, {"x": 0.1, "y": 1}, {"x": 0.2, "y": 0}, {"x": 0.3, "y": 2}, {"x": 0.4, "y": 3}, {"x": 0.5, "y": 1}, {"x": 0.6, "y": 0}, {"x": 0.7, "y": 2}, {"x": 0.8, "y": 3}, {"x": 0.9, "y": 8}, {"x": 1.0, "y": 4}];
+const negPct       = 49;
+const neuPct       = 5;
+const posPct       = 46;
+const totalFilms   = 291;
+const nOscar       = 24;
+const nNonOscar    = 267;
+const nBoTop       = 51;
+const nBoBot       = 151;
+const boThreshM    = 58.5;
+const imdbHighBars = [{"x": -1.0, "y": 4}, {"x": -0.9, "y": 6}, {"x": -0.8, "y": 4}, {"x": -0.7, "y": 2}, {"x": -0.6, "y": 1}, {"x": -0.5, "y": 0}, {"x": -0.4, "y": 1}, {"x": -0.3, "y": 1}, {"x": -0.2, "y": 3}, {"x": -0.1, "y": 2}, {"x": 0.0, "y": 1}, {"x": 0.1, "y": 1}, {"x": 0.2, "y": 2}, {"x": 0.3, "y": 3}, {"x": 0.4, "y": 1}, {"x": 0.5, "y": 1}, {"x": 0.6, "y": 0}, {"x": 0.7, "y": 2}, {"x": 0.8, "y": 1}, {"x": 0.9, "y": 4}, {"x": 1.0, "y": 2}];
+const imdbLowBars  = [{"x": -1.0, "y": 15}, {"x": -0.9, "y": 25}, {"x": -0.8, "y": 13}, {"x": -0.7, "y": 17}, {"x": -0.6, "y": 17}, {"x": -0.5, "y": 7}, {"x": -0.4, "y": 5}, {"x": -0.3, "y": 6}, {"x": -0.2, "y": 7}, {"x": -0.1, "y": 5}, {"x": 0.0, "y": 14}, {"x": 0.1, "y": 5}, {"x": 0.2, "y": 2}, {"x": 0.3, "y": 3}, {"x": 0.4, "y": 10}, {"x": 0.5, "y": 4}, {"x": 0.6, "y": 10}, {"x": 0.7, "y": 12}, {"x": 0.8, "y": 20}, {"x": 0.9, "y": 31}, {"x": 1.0, "y": 16}];
+const nImdbHigh    = 42;
+const nImdbLow     = 244;
+
+document.getElementById('neg-pct').textContent = negPct + '%';
+document.getElementById('neu-pct').textContent = neuPct + '%';
+document.getElementById('pos-pct').textContent = posPct + '%';
+document.getElementById('main-subtitle').textContent =
+  totalFilms + ' films scored by AI reading their plot descriptions';
+
+const COLORS  = { neg: '#F0997B', neu: '#B4B2A9', pos: '#5DCAA5' };
+const BORDERS = { neg: '#D85A30', neu: '#5F5E5A', pos: '#1D9E75' };
+
+// ── Square cluster animation ──────────────────────────────────────────────────
+const canvas = document.getElementById('squaresCanvas');
+const ctx    = canvas.getContext('2d');
+const SQ = 10, GAP = 3;
+const total    = 60;
+const negCount = Math.round(total * negPct / 100);
+const neuCount = Math.round(total * neuPct / 100);
+const posCount = total - negCount - neuCount;
+
+function buildCluster(count, zone) {
+  const cols = Math.ceil(Math.sqrt(count * 1.8));
+  return Array.from({ length: count }, (_, i) => ({
+    zone, col: i % cols, row: Math.floor(i / cols),
+  }));
+}
+const negSquares = buildCluster(negCount, 'neg');
+const neuSquares = buildCluster(neuCount, 'neu');
+const posSquares = buildCluster(posCount, 'pos');
+const allSquares = [...negSquares, ...neuSquares, ...posSquares];
+
+function getClusterPositions(squares, centerX, baseY) {
+  const cols   = Math.ceil(Math.sqrt(squares.length * 1.8));
+  const blockW = cols * (SQ + GAP);
+  const startX = centerX - blockW / 2;
+  return squares.map(s => ({
+    x: startX + s.col * (SQ + GAP),
+    y: baseY  - s.row * (SQ + GAP),
+  }));
+}
+
+function getBarPositions(squares, canvasW, canvasH) {
+  const maxVal  = Math.max(...bars.map(b => b.y));
+  const barW    = (canvasW - 60) / bars.length;
+  const chartH  = canvasH - 40;
+  const originX = 30, originY = canvasH - 40;
+  const assignments = [];
+  let si = 0;
+  for (let bi = 0; bi < bars.length; bi++) {
+    const bar   = bars[bi];
+    const count = Math.round((bar.y / bars.reduce((a,b) => a+b.y, 0)) * squares.length);
+    for (let k = 0; k < count && si < squares.length; k++, si++) {
+      assignments.push({
+        x: originX + bi * barW + (barW - SQ) / 2,
+        y: originY - (k+1) * (chartH/maxVal * bar.y / Math.max(count,1)) * (1/squares.length*count),
+        zone: bar.x < -0.05 ? 'neg' : bar.x <= 0.05 ? 'neu' : 'pos',
+      });
+    }
+  }
+  while (si < squares.length) {
+    assignments.push({ x: canvasW/2, y: canvasH/2, zone: 'neu' }); si++;
+  }
+  return assignments;
+}
+
+let startPos = [], endPos = [], rafId = null, phase = 'clusters';
+
+function resize() {
+  canvas.width  = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+  computePositions();
+  if (phase === 'clusters') drawClusters();
+}
+function computePositions() {
+  const W = canvas.width, H = canvas.height, baseY = H - 20;
+  startPos = [
+    ...getClusterPositions(negSquares, W * 0.20, baseY),
+    ...getClusterPositions(neuSquares, W * 0.50, baseY),
+    ...getClusterPositions(posSquares, W * 0.80, baseY),
+  ];
+  endPos = getBarPositions(allSquares, W, H);
+}
+function easeInOut(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+function drawFrame(t) {
+  const e = easeInOut(Math.min(t, 1));
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  allSquares.forEach((sq, i) => {
+    const s = startPos[i]||{x:0,y:0}, en = endPos[i]||{x:0,y:0};
+    ctx.fillStyle = COLORS[sq.zone];
+    ctx.beginPath();
+    ctx.roundRect(s.x+(en.x-s.x)*e, s.y+(en.y-s.y)*e, SQ, SQ, 2);
+    ctx.fill();
+  });
+}
+function drawClusters() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  [{x: canvas.width*0.20, text:'Dark',      color: COLORS.neg},
+   {x: canvas.width*0.50, text:'Neutral',   color: COLORS.neu},
+   {x: canvas.width*0.80, text:'Uplifting', color: COLORS.pos}
+  ].forEach(l => {
+    ctx.fillStyle = l.color;
+    ctx.font = '12px -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(l.text, l.x, 16);
+  });
+  allSquares.forEach((sq, i) => {
+    const s = startPos[i]||{x:0,y:0};
+    const floatY = s.y + Math.sin(Date.now()/900 + i*0.3)*2;
+    ctx.fillStyle = COLORS[sq.zone];
+    ctx.beginPath();
+    ctx.roundRect(s.x, floatY, SQ, SQ, 2);
+    ctx.fill();
+  });
+}
+function idleLoop() {
+  if (phase !== 'clusters') return;
+  drawClusters();
+  rafId = requestAnimationFrame(idleLoop);
+}
+
+// ── Chart.js ──────────────────────────────────────────────────────────────────
+let chartInstance = null;
+
+function buildChart() {
+  chartInstance = new Chart(document.getElementById('sentChart'), {
+    type: 'bar',
+    data: {
+      labels: bars.map(b => b.x.toFixed(2)),
+      datasets: [{
+        data: bars.map(b => b.y),
+        backgroundColor: bars.map(b => COLORS[b.zone]),
+        borderColor:     bars.map(b => BORDERS[b.zone]),
+        borderWidth: 0, borderRadius: 0, borderSkipped: false,
+        categoryPercentage: 1.0, barPercentage: 1.0,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      animation: { duration: 600 },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: items => {
+              const s = parseFloat(items[0].label);
+              const z = s < -0.05 ? 'Dark tone' : s <= 0.05 ? 'Neutral tone' : 'Uplifting tone';
+              return 'Score ' + items[0].label + '  .  ' + z;
+            },
+            label: item => ' ' + item.raw + ' films'
+          },
+          backgroundColor: '#1a1a1a', titleColor: '#cfcfc4',
+          bodyColor: '#cfcfc4', padding: 10, cornerRadius: 8
+        }
+      },
+      scales: {
+        x: {
+          ticks: {
+            autoSkip: false, maxRotation: 0,
+            callback: (val, i) => {
+              const label = parseFloat(bars[i].x.toFixed(2));
+              return [-1,-0.5,0,0.5,1].includes(label) ? label.toFixed(1) : '';
+            },
+            color: '#cfcfc4', font: { size: 13 }
+          },
+          grid: { display: false }, border: { display: false },
+          categoryPercentage: 1.0, barPercentage: 1.0
+        },
+        y: {
+          title: { display: true, text: 'Number of films', color: '#cfcfc4', font: {size:13} },
+          ticks: { color: '#cfcfc4', font: {size:13} },
+          grid: { color: 'rgba(255,255,255,0.10)' },
+          border: { display: false }
+        }
+      }
+    }
+  });
+}
+
+// ── Card helpers ──────────────────────────────────────────────────────────────
+function calcPcts(barsArr) {
+  const total = barsArr.reduce((a, b) => a + b.y, 0);
+  if (total === 0) return { neg: 0, neu: 0, pos: 0 };
+  let neg = 0, neu = 0, pos = 0;
+  barsArr.forEach(b => {
+    if      (b.x < -0.05) neg += b.y;
+    else if (b.x <= 0.05) neu += b.y;
+    else                  pos += b.y;
+  });
+  return {
+    neg: Math.round(neg / total * 100),
+    neu: Math.round(neu / total * 100),
+    pos: Math.round(pos / total * 100),
+  };
+}
+
+function updateCardsComparison(labelA, colorA, pA, labelB, colorB, pB) {
+  const wrap = document.getElementById('cards-wrap');
+  wrap.className = 'cards-6';
+  wrap.innerHTML =
+    '<div class="card-group-label first" style="color:' + colorA + '">' + labelA + '</div>' +
+    '<div class="card card-neg"><div class="card-num" style="color:#D85A30">' + pA.neg + '%</div><div class="card-lbl">Negative</div></div>' +
+    '<div class="card card-neu"><div class="card-num" style="color:#9a9a94">' + pA.neu + '%</div><div class="card-lbl">Neutral</div></div>' +
+    '<div class="card card-pos"><div class="card-num" style="color:#1D9E75">' + pA.pos + '%</div><div class="card-lbl">Positive</div></div>' +
+    '<div class="card-group-label" style="color:' + colorB + '">' + labelB + '</div>' +
+    '<div class="card card-neg"><div class="card-num" style="color:#D85A30">' + pB.neg + '%</div><div class="card-lbl">Negative</div></div>' +
+    '<div class="card card-neu"><div class="card-num" style="color:#9a9a94">' + pB.neu + '%</div><div class="card-lbl">Neutral</div></div>' +
+    '<div class="card card-pos"><div class="card-num" style="color:#1D9E75">' + pB.pos + '%</div><div class="card-lbl">Positive</div></div>';
+}
+
+// ── Shared overlay chart builder ──────────────────────────────────────────────
+function buildOverlayChart(baseBars, overlayBars, overlayColor,
+                           titleText, subtitleText,
+                           legBaseId, legOverlayId) {
+  if (chartInstance) chartInstance.destroy();
+  document.getElementById('annotationCanvas').style.opacity = '0';
+
+  const baseTotal    = baseBars.reduce((a,b) => a+b.y, 0);
+  const overlayTotal = overlayBars.reduce((a,b) => a+b.y, 0);
+  const baseNorm     = baseBars.map(b    => baseTotal    > 0 ? b.y/baseTotal    : 0);
+  const overlayNorm  = overlayBars.map(b => overlayTotal > 0 ? b.y/overlayTotal : 0);
+
+  chartInstance = new Chart(document.getElementById('sentChart'), {
+    type: 'bar',
+    data: {
+      labels: baseBars.map(b => b.x.toFixed(2)),
+      datasets: [
+        {
+          label: 'base',
+          data: baseNorm,
+          backgroundColor: 'rgba(100,100,100,0.9)',
+          borderColor: 'transparent',
+          borderWidth: 0, borderRadius: 0, borderSkipped: false,
+          categoryPercentage: 1.0, barPercentage: 1.0,
+          order: 2,
+        },
+        {
+          label: 'overlay',
+          data: overlayBars.map(() => 0),
+          backgroundColor: overlayColor,
+          borderColor: 'transparent',
+          borderWidth: 0, borderRadius: 0, borderSkipped: false,
+          categoryPercentage: 1.0, barPercentage: 1.0,
+          order: 1,
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      animation: { duration: 800 },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: items => 'Score ' + items[0].label,
+            label: item => ' ' + (item.raw * 100).toFixed(1) + '% of group'
+          },
+          backgroundColor: '#1a1a1a', titleColor: '#cfcfc4',
+          bodyColor: '#cfcfc4', padding: 10, cornerRadius: 8
+        }
+      },
+      scales: {
+        x: {
+          stacked: false,
+          ticks: {
+            autoSkip: false, maxRotation: 0,
+            callback: (val, i) => {
+              const label = parseFloat(baseBars[i].x.toFixed(2));
+              return [-1,-0.5,0,0.5,1].includes(label) ? label.toFixed(1) : '';
+            },
+            color: '#cfcfc4', font: { size: 13 }
+          },
+          grid: { display: false }, border: { display: false },
+          categoryPercentage: 1.0, barPercentage: 1.0, offset: false
+        },
+        y: {
+          stacked: false,
+          title: { display: true, text: 'Share of films in group (%)', color: '#cfcfc4', font: {size:13} },
+          ticks: {
+            color: '#cfcfc4', font: { size: 13 },
+            callback: val => (val * 100).toFixed(0) + '%'
+          },
+          grid: { color: 'rgba(255,255,255,0.10)' },
+          border: { display: false }
+        }
+      }
+    },
+    plugins: [{
+      id: 'overlayBars',
+      beforeDatasetsDraw(chart) {
+        const meta0 = chart.getDatasetMeta(0);
+        const meta1 = chart.getDatasetMeta(1);
+        if (!meta0.data.length || !meta1.data.length) return;
+        const chartWidth = chart.chartArea.right - chart.chartArea.left;
+        const binWidth   = Math.ceil(chartWidth / baseBars.length) + 1;
+        meta0.data.forEach((bar, i) => {
+          bar.width = binWidth;
+          if (meta1.data[i]) {
+            meta1.data[i].x     = bar.x;
+            meta1.data[i].width = binWidth;
+          }
+        });
+      }
+    }]
+  });
+
+  // Update legend
+  ['leg-neg','leg-neu','leg-pos','leg-oscar','leg-nooscar','leg-botop','leg-bobot','leg-imdbhigh','leg-imdblow']
+    .forEach(id => document.getElementById(id).style.opacity = '0');
+  document.getElementById(legBaseId).style.opacity    = '1';
+  document.getElementById(legOverlayId).style.opacity = '1';
+
+  document.getElementById('main-title').textContent    = titleText;
+  document.getElementById('main-subtitle').textContent = subtitleText;
+
+  // Animate overlay bars up then update cards
+  setTimeout(() => {
+    chartInstance.data.datasets[1].data = overlayNorm;
+    chartInstance.options.animation = { duration: 1200 };
+    chartInstance.update('active');
+  }, 900);
+}
+
+// ── Phase transitions ─────────────────────────────────────────────────────────
+function morphToOscar() {
+  if (!chartInstance || phase !== 'chart') return;
+  phase = 'oscar';
+  buildOverlayChart(
+    oscarNoBars, oscarYesBars,
+    'rgba(255,215,0,0.5)',
+    'Plot Sentiment: Oscar Winners vs. Non-Winners',
+    'Oscar winners (n=' + nOscar + ') vs. all other films (n=' + nNonOscar + ')',
+    'leg-nooscar', 'leg-oscar'
+  );
+  setTimeout(() => {
+    updateCardsComparison(
+      'Non-winners',   '#9a9a94', calcPcts(oscarNoBars),
+      'Oscar winners', '#FFD700', calcPcts(oscarYesBars)
+    );
+  }, 900);
+}
+
+function morphToBoxOffice() {
+  if (phase !== 'oscar' && phase !== 'chart') return;
+  phase = 'boxoffice';
+  buildOverlayChart(
+    boBotBars, boTopBars,
+    'rgba(67,160,71,0.5)',
+    'Plot Sentiment: Box Office Top 25% vs. Rest',
+    'Top 25% BO (n=' + nBoTop + ')  vs.  bottom 75% (n=' + nBoBot + ')  |  threshold: $' + boThreshM + 'M',
+    'leg-bobot', 'leg-botop'
+  );
+  setTimeout(() => {
+    updateCardsComparison(
+      'Bottom 75% box office', '#9a9a94', calcPcts(boBotBars),
+      'Top 25% box office',   '#43A047', calcPcts(boTopBars)
+    );
+  }, 900);
+}
+
+function morphToImdb() {
+  if (phase !== 'boxoffice' && phase !== 'oscar' && phase !== 'chart') return;
+  phase = 'imdb';
+  buildOverlayChart(
+    imdbLowBars, imdbHighBars,
+    'rgba(233,30,99,0.5)',
+    'Plot Sentiment: High vs. Low IMDb Rating',
+    'IMDb 7.5+ (n=' + nImdbHigh + ')  vs.  below 7.5 (n=' + nImdbLow + ')',
+    'leg-imdblow', 'leg-imdbhigh'
+  );
+  setTimeout(() => {
+    updateCardsComparison(
+      'IMDb below 7.5', '#9a9a94', calcPcts(imdbLowBars),
+      'IMDb 7.5+',      '#E91E63', calcPcts(imdbHighBars)
+    );
+  }, 900);
+}
+
+// ── Trigger animation (squares → chart) ──────────────────────────────────────
+function triggerAnimation() {
+  if (phase !== 'clusters') return;
+  phase = 'animating';
+  cancelAnimationFrame(rafId);
+  const start = performance.now(), dur = 2600;
+  function step(now) {
+    const progress = (now - start) / dur;
+    drawFrame(progress);
+    if (progress < 1) {
+      rafId = requestAnimationFrame(step);
+    } else {
+      phase = 'chart';
+      document.getElementById('squares-stage').style.display = 'none';
+      const cw = document.getElementById('chartWrap');
+      cw.style.display = 'block';
+      setTimeout(() => cw.classList.add('visible'), 30);
+      buildChart();
+    }
+  }
+  rafId = requestAnimationFrame(step);
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+window.addEventListener('load', () => { resize(); idleLoop(); });
+window.addEventListener('resize', resize);
+
+window.addEventListener('message', e => {
+  if (e.data === 'startAnimation') triggerAnimation();
+  if (e.data === 'startOscar')     morphToOscar();
+  if (e.data === 'startBoxOffice') morphToBoxOffice();
+  if (e.data === 'startImdb') morphToImdb();
+});
+
+canvas.addEventListener('click', triggerAnimation);
+document.getElementById('chartWrap').addEventListener('click', () => {
+  if      (phase === 'chart')      morphToOscar();
+  else if (phase === 'oscar')      morphToBoxOffice();
+  else if (phase === 'boxoffice')  morphToImdb();
+});
+</script>
+</body>
+</html>

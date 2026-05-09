@@ -705,9 +705,9 @@ h2 {
 <section class="hero">
   <div>
     <h1>How to make a successful movie in San Francisco?</h1>
-    <p class="lede">Every great movie starts with a question. Ours is simple: what does it take to make a hit film in Golden Gate City? 
-      We are exploring two kinds of success: The kind that fills seats - box office gold. And the kind that fills trophy cases - awards and critical acclaim. 
-      We have merged 2 datasets: filming locations in San Francisco and movie information from The Open Movie Database. 
+    <p class="lede">Every great movie starts with a question. Ours is simple: what does it take to make a hit film in Golden Gate city?
+      We are exploring three different measures of success: the kind that fills seats - box office performance, the kind that fills trophy cases - Oscar recognition, and the kind that wins over audiences - IMDb ratings.
+      We have merged 2 datasets: filming locations in San Francisco and movie information from the Open Movie Database.
       We hope our analysis will help film students, young directors, movie production companies or just movie buffs see what makes a movie truly great.</p>
     <div class="scroll-cue" aria-hidden="true">
       <span>Scroll down</span>
@@ -721,9 +721,8 @@ h2 {
   <div class="sf-experience-sticky">
     <div class="sf-experience-copy">
       <div class="copy-card">
-        <div class="eyebrow">Filming locations</div>
         <h2>San Francisco on screen</h2>
-        <p>Explore the map to see how filming activity spreads across San Francisco. As you scroll, the visualization moves through time and then shifts into a neighborhood-level view of where movies have been filmed.</p>
+        <p>Explore the map to see how filming activity spreads across the city. As you scroll, the visualization moves through time and then shifts into a neighborhood view of where movies have been filmed.</p>
       </div>
     </div>
     <div class="sf-experience-shell">
@@ -808,16 +807,16 @@ h2 {
 &lt;div id=&quot;decade-ghost&quot;&gt;&lt;/div&gt;
 
 &lt;div class=&quot;map-title&quot; id=&quot;title-a&quot;&gt;
-  Filming Location Density — San Francisco
-  &lt;span style=&quot;font-weight:400;color:#aaa;margin-left:8px;&quot;&gt;scroll to advance&lt;/span&gt;
+  Filming location density in San Francisco
+  &lt;span style=&quot;font-weight:400;color:#aaa;margin-left:8px;&quot;&gt;Scroll to advance&lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&quot;map-title&quot; id=&quot;title-b&quot; style=&quot;opacity:0;&quot;&gt;
-  Filming Locations by Neighborhood — San Francisco
+  Filming locations by neighborhood in San Francisco
   &lt;span style=&quot;font-weight:400;color:#aaa;margin-left:8px;&quot;&gt;&lt;/span&gt;
 &lt;/div&gt;
 
 &lt;div id=&quot;scroll-hint&quot;&gt;
-  &lt;span&gt;scroll&lt;/span&gt;
+  &lt;span&gt;Scroll&lt;/span&gt;
   &lt;div class=&quot;arrow&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
 
@@ -3754,18 +3753,16 @@ html, body {
 <section class="narrative-section" id="sentiment-intro">
   <div>
     <h2>Looking beyond location</h2>
-    <p class="lede">Let's now move our focus from where films were shot to what kinds of stories they tell. Using sentiment analysis, we are exploring how the content of the movie influences awards, ratings and box office performance.</p>
+    <p class="lede">Let's now move our focus from where films were shot to what kinds of stories they tell. Using sentiment analysis, we are exploring how the content of the movie description influences awards, ratings and box office performance.</p>
   </div>
 </section>
 
 <section class="tone-scrolly" id="toneScrolly">
   <div class="tone-sticky">
     <div class="tone-container">
-      <p class="tone-section-label">Plot Sentiment — What does it mean?</p>
-      <h2 class="tone-section-title">Not a rating. A tone.</h2>
+      <h2 class="tone-section-title">An overview of the movies tone spectrum</h2>
       <p class="tone-section-sub">
-        Each film's plot is read by an AI that scores its emotional tone —
-        from very dark (−1) to very uplifting (+1). Scroll to see how different films land on the same scale.
+        Scroll to see how some of the films move on the sentiment spectrum.
       </p>
 
       <div class="tone-scale-wrap" aria-label="Sentiment scale from dark to uplifting">
@@ -3787,7 +3784,7 @@ html, body {
       <article class="tone-movie-panel" id="toneMoviePanel">
         <img class="tone-poster-img" id="tonePoster" src="" alt="">
         <div>
-          <div class="tone-movie-kicker" id="toneMovieKicker">Example film</div>
+          <div class="tone-movie-kicker" id="toneMovieKicker"></div>
           <h3 class="tone-movie-title" id="toneMovieTitle"></h3>
           <div class="tone-movie-genre" id="toneMovieGenre"></div>
           <div class="tone-score-line">
@@ -3862,9 +3859,9 @@ html, body {
 &lt;/head&gt;
 &lt;body&gt;
 &lt;div class=&quot;container&quot;&gt;
-  &lt;p class=&quot;section-label&quot;&gt;Plot Sentiment&lt;/p&gt;
-  &lt;h2 class=&quot;genre-title&quot;&gt;Plot Sentiment by Genre&lt;/h2&gt;
-  &lt;p class=&quot;genre-sub&quot;&gt;Mean compound sentiment score — genres with at least 5 SF films&lt;/p&gt;
+  &lt;p class=&quot;section-label&quot;&gt;&lt;/p&gt;
+  &lt;h2 class=&quot;genre-title&quot;&gt;Plot sentiment by genre&lt;/h2&gt;
+  &lt;p class=&quot;genre-sub&quot;&gt;Mean sentiment score for genres with at least 5 SF films&lt;/p&gt;
   &lt;div class=&quot;tone-key&quot; aria-hidden=&quot;true&quot;&gt;
     &lt;span&gt;Dark tone&lt;/span&gt;
     &lt;div class=&quot;tone-line&quot; style=&quot;width:180px;&quot;&gt;&lt;/div&gt;
@@ -3942,9 +3939,7 @@ window.addEventListener(&#x27;message&#x27;, e =&gt; {
   <div class="chart-steps" id="genreSteps">
     <section class="genre-chart-step" data-index="0">
       <div class="copy-card">
-        <div class="eyebrow">Genres</div>
-        <h2>Placeholder heading</h2>
-        <p>Placeholder text for the genre sentiment infographic. Add your interpretation of which genres lean darker or more uplifting here.</p>
+        <p>Going further into exploring the sentiment spectrum, we can see it correlates with some of our expectations regarding movie genres. Everyone loves a good musical!</p>
       </div>
     </section>
   </div>
@@ -4032,7 +4027,7 @@ window.addEventListener(&#x27;message&#x27;, e =&gt; {
 &lt;body&gt;
 &lt;div class=&quot;container&quot;&gt;
 
-  &lt;h2 id=&quot;main-title&quot;&gt;How do SF movie plots feel emotionally?&lt;/h2&gt;
+  &lt;h2 id=&quot;main-title&quot;&gt;All SF movies scores&lt;/h2&gt;
   &lt;p class=&quot;subtitle&quot; id=&quot;main-subtitle&quot;&gt;Loading...&lt;/p&gt;
 
   &lt;div class=&quot;legend&quot;&gt;
@@ -4098,7 +4093,7 @@ document.getElementById(&#x27;neg-pct&#x27;).textContent = negPct + &#x27;%&#x27
 document.getElementById(&#x27;neu-pct&#x27;).textContent = neuPct + &#x27;%&#x27;;
 document.getElementById(&#x27;pos-pct&#x27;).textContent = posPct + &#x27;%&#x27;;
 document.getElementById(&#x27;main-subtitle&#x27;).textContent =
-  totalFilms + &#x27; films scored by AI reading their plot descriptions&#x27;;
+  totalFilms + &#x27; films scored by their plot descriptions&#x27;;
 
 const COLORS  = { neg: &#x27;#F0997B&#x27;, neu: &#x27;#B4B2A9&#x27;, pos: &#x27;#5DCAA5&#x27; };
 const BORDERS = { neg: &#x27;#D85A30&#x27;, neu: &#x27;#5F5E5A&#x27;, pos: &#x27;#1D9E75&#x27; };
@@ -4530,8 +4525,8 @@ function resetSentimentMeta() {
   [&#x27;leg-neg&#x27;,&#x27;leg-neu&#x27;,&#x27;leg-pos&#x27;].forEach(id =&gt; document.getElementById(id).style.opacity = &#x27;1&#x27;);
   [&#x27;leg-oscar&#x27;,&#x27;leg-nooscar&#x27;,&#x27;leg-botop&#x27;,&#x27;leg-bobot&#x27;,&#x27;leg-imdbhigh&#x27;,&#x27;leg-imdblow&#x27;]
     .forEach(id =&gt; document.getElementById(id).style.opacity = &#x27;0&#x27;);
-  document.getElementById(&#x27;main-title&#x27;).textContent = &#x27;How do SF movie plots feel emotionally?&#x27;;
-  document.getElementById(&#x27;main-subtitle&#x27;).textContent = totalFilms + &#x27; films scored by AI reading their plot descriptions&#x27;;
+  document.getElementById(&#x27;main-title&#x27;).textContent = &#x27;All SF movies scores&#x27;;
+  document.getElementById(&#x27;main-subtitle&#x27;).textContent = totalFilms + &#x27; films scored by their plot descriptions&#x27;;
   restoreThreeCards();
 }
 
@@ -4586,7 +4581,7 @@ function renderSentimentStage(stage) {
     buildOverlayChart(
       oscarNoBars, oscarYesBars,
       &#x27;rgba(255,215,0,0.5)&#x27;,
-      &#x27;Plot Sentiment: Oscar Winners vs. Non-Winners&#x27;,
+      &#x27;Oscar winners vs. non-winners&#x27;,
       &#x27;Oscar winners (n=&#x27; + nOscar + &#x27;) vs. all other films (n=&#x27; + nNonOscar + &#x27;)&#x27;,
       &#x27;leg-nooscar&#x27;, &#x27;leg-oscar&#x27;
     );
@@ -4599,7 +4594,7 @@ function renderSentimentStage(stage) {
     buildOverlayChart(
       boBotBars, boTopBars,
       &#x27;rgba(67,160,71,0.5)&#x27;,
-      &#x27;Plot Sentiment: Box Office Top 25% vs. Rest&#x27;,
+      &#x27;Box office top 25% vs. rest&#x27;,
       &#x27;Top 25% BO (n=&#x27; + nBoTop + &#x27;)  vs.  bottom 75% (n=&#x27; + nBoBot + &#x27;)  |  threshold: $&#x27; + boThreshM + &#x27;M&#x27;,
       &#x27;leg-bobot&#x27;, &#x27;leg-botop&#x27;
     );
@@ -4612,7 +4607,7 @@ function renderSentimentStage(stage) {
     buildOverlayChart(
       imdbLowBars, imdbHighBars,
       &#x27;rgba(233,30,99,0.5)&#x27;,
-      &#x27;Plot Sentiment: High vs. Low IMDb Rating&#x27;,
+      &#x27;High vs. low IMDb rating&#x27;,
       &#x27;IMDb 7.5+ (n=&#x27; + nImdbHigh + &#x27;)  vs.  below 7.5 (n=&#x27; + nImdbLow + &#x27;)&#x27;,
       &#x27;leg-imdblow&#x27;, &#x27;leg-imdbhigh&#x27;
     );
@@ -4655,41 +4650,34 @@ window.setSentimentStage = function(stage) {
   <div class="chart-steps" id="chartSteps">
     <section class="chart-step" data-index="0">
       <div class="copy-card">
-        <div class="eyebrow">Plot sentiment</div>
-        <h2>Placeholder heading</h2>
-        <p>Placeholder text for the intro dot clusters. Add your setup or framing copy here before the bars appear.</p>
+        <p>Now let's visualize all of our movies in terms of the sentiment scores. We have a pretty balanced set of almost half dark and half uplifting movies.</p>
       </div>
     </section>
 
     <section class="chart-step" data-index="1">
       <div class="copy-card">
-        <div class="eyebrow">Plot sentiment</div>
-        <h2>Placeholder heading</h2>
-        <p>Placeholder text for the overall sentiment distribution. Add your interpretation of how dark, neutral and uplifting SF movie plots compare here.</p>
+        <p>Perfect! Now we have a nice view of our dataset turned into lovely bar charts.</p>
       </div>
     </section>
 
     <section class="chart-step" data-index="2">
       <div class="copy-card">
-        <div class="eyebrow">Awards</div>
-        <h2>Placeholder heading</h2>
-        <p>Placeholder text for Oscar winners versus non-winners. Add your interpretation of whether award-winning films lean darker, more neutral or more uplifting here.</p>
+        <h2>And the Oscar goes to...</h2>
+        <p>Looking at which films take home Oscars, movies with more uplifting emotional tones seem more likely to leave a strong impression on the judges.</p>
       </div>
     </section>
 
     <section class="chart-step" data-index="3">
       <div class="copy-card">
-        <div class="eyebrow">Box office</div>
-        <h2>Placeholder heading</h2>
-        <p>Placeholder text for top box office films versus the rest. Add your interpretation of how sentiment relates to commercial performance here.</p>
+        <h2>Box office success</h2>
+        <p>Here things are more balanced on the tone spectrum, with no clear correlation. Money does <i>not</i> talk here unfortunately.</p>
       </div>
     </section>
 
     <section class="chart-step" data-index="4">
       <div class="copy-card">
-        <div class="eyebrow">IMDb ratings</div>
-        <h2>Placeholder heading</h2>
-        <p>Placeholder text for high-rated IMDb films versus lower-rated films. Add your interpretation of how plot sentiment relates to audience ratings here.</p>
+        <h2>What does IMDb say?</h2>
+        <p>The people do not agree with Oscar judges. IMDb reviewers are more drawn to movies with a darker atmosphere.</p>
       </div>
     </section>
   </div>
@@ -4885,7 +4873,7 @@ setTimeout(updateGenreStory, 600);
       genres:'Crime, Drama, Mystery',
       tone:'Dark tone',
       color:'#c0543a',
-      note:'A crime mystery plot with threat, fear and violence reads as strongly negative in emotional tone.'
+      note:'A crime mystery plot with suspense, fear and violence reads as strongly negative in emotional tone.'
     },
     {
       title:'Dr. Dolittle 2',
@@ -4894,7 +4882,7 @@ setTimeout(updateGenreStory, 600);
       genres:'Comedy, Family, Fantasy',
       tone:'Uplifting tone',
       color:'#1a8a65',
-      note:'A family comedy with rescue, friendship and positive resolution lands near the uplifting end of the scale.'
+      note:'A family comedy with rescue, friendship and happy ending lands at the uplifting end of the scale.'
     },
     {
       title:'Babies (2010)',
@@ -4903,7 +4891,7 @@ setTimeout(updateGenreStory, 600);
       genres:'Documentary',
       tone:'Neutral tone',
       color:'#aaa89f',
-      note:'No heroes, villains or dramatic arc. The score reflects a mostly observational plot description.'
+      note:'No heroes, villains or drama. The score reflects a mostly observational plot description.'
     }
   ];
 
